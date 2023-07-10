@@ -8,7 +8,7 @@ const DB_PASSWORD = config.get("DB_PASSWORD");
 
 if (ENVIRONMENT === "development")
   mongoose
-    .connect("mongodb://127.0.0.1:27017/BCard_sagi_moraly")
+    .connect("mongodb://127.0.0.1:27017/twitter_clone_sagi_moraly")
     .then(() =>
       console.log(
         chalk.magentaBright(
@@ -25,7 +25,7 @@ if (ENVIRONMENT === "development")
 if (ENVIRONMENT === "production")
   mongoose
     .connect(
-      `mongodb+srv://127.0.0.1:27017/${DB_NAME}:${DB_PASSWORD}BCard_sagi_moraly`
+      `mongodb+srv://127.0.0.1:27017/${DB_NAME}:${DB_PASSWORD}twitter_clone_sagi_moraly`
     )
     .then(() =>
       console.log(

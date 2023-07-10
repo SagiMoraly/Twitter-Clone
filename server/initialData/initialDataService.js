@@ -12,7 +12,6 @@ const generateInitialCards = async () => {
   const userId = "649d3238bac95e85fa0f0546";
   cards.forEach(async (card) => {
     try {
-      console.log(card.title);
       const { error } = validateCard(card);
       if (error) throw new Error(`Joi Error: ${error.details[0].message}`);
 
