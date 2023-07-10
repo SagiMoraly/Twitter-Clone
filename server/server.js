@@ -7,7 +7,7 @@ const morganLogger = require("./middleware/loggers/morganLogger");
 
 const config = require("config");
 const {
-  generateInitialCards,
+  generateInitialPosts,
   generateInitialUsers,
 } = require("./initialData/initialDataService");
 
@@ -21,6 +21,6 @@ const PORT = config.get("PORT") || 9000;
 app.listen(PORT, async () => {
   console.log(chalk.blueBright(`Listening on: http://localhost:${PORT}`));
   require("./DB/mongodb/connectToMongoDB");
-  await generateInitialCards();
+  // await generateInitialPosts();
   await generateInitialUsers();
 });

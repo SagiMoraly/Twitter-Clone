@@ -23,8 +23,23 @@ const URL_REGEX =
   /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 
 const imageSchema = new mongoose.Schema({
-  url: regexType(URL_REGEX),
-  alt: DEFAULT_VALIDATION,
+  url: {
+    ...regexType(URL_REGEX, false),
+    validate: () => {
+      if (this.url && !this.alt) {
+        throw new Error("alt field is required when url field is provided");
+      }
+    },
+  },
+  alt: {
+    type: String,
+    trim: true,
+    minLength: 0,
+    maxLength: 256,
+    required: () => {
+      return !!this.url;
+    },
+  },
 });
 
 const commentSchema = new mongoose.Schema({

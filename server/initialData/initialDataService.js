@@ -1,29 +1,29 @@
-const normalizeCard = require("../collections/cards/helpers/normalizeCard");
-const validateCard = require("../collections/cards/models/joi/validateCard");
-const Card = require("../collections/cards/models/mongoose/Card");
+const normalizePost = require("../collections/posts/helpers/normalizePost");
+const validatePost = require("../collections/posts/models/joi/validatePost");
+const Post = require("../collections/posts/models/mongoose/Post");
 const normalizeUser = require("../collections/users/helpers/normalizeUser");
 const registerValidation = require("../collections/users/models/joi/registerValidation");
 const User = require("../collections/users/models/mongoose/User");
 const data = require("./initialData.json");
 const chalk = require("chalk");
 
-const generateInitialCards = async () => {
-  const { cards } = data;
+const generateInitialPosts = async () => {
+  const { posts } = data;
   const userId = "649d3238bac95e85fa0f0546";
-  cards.forEach(async (card) => {
+  posts.forEach(async (post) => {
     try {
-      const { error } = validateCard(card);
+      const { error } = validatePost(post);
       if (error) throw new Error(`Joi Error: ${error.details[0].message}`);
 
-      const normalizedCard = await normalizeCard(card, userId);
-      const cardToDB = new Card(normalizedCard);
-      await cardToDB.save();
+      const normalizedPost = await normalizePost(post, userId);
+      const postToDB = new Post(normalizedPost);
+      await postToDB.save();
       console.log(
-        chalk.greenBright(`Generate card '${card.title}' successfully`)
+        chalk.greenBright(`Generate post '${post.title}' successfully`)
       );
     } catch (error) {
       console.log(
-        chalk.redBright(`Initial Data Generate Card Error: ${error.message}`)
+        chalk.redBright(`Initial Data Generate Post Error: ${error.message}`)
       );
     }
   });
@@ -56,5 +56,5 @@ const generateInitialUsers = async () => {
   });
 };
 
-exports.generateInitialCards = generateInitialCards;
+exports.generateInitialPosts = generateInitialPosts;
 exports.generateInitialUsers = generateInitialUsers;

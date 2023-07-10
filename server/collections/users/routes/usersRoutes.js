@@ -16,7 +16,6 @@ router.post("/login", login);
 router.get("/", auth, getUsers);
 router.get("/:userId", auth, getUser);
 router.put("/:userId", auth, updateUser);
-router.patch("/:userId", auth, isBusinessUser);
 router.delete("/:userId", auth, deleteUser);
 
 module.exports = router;

@@ -115,24 +115,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-const isBusinessUser = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    let user = req.user;
-
-    if (!(user._id === userId))
-      throw new Error("A user dose not have the ability to use this function");
-    const pipeline = [{ $set: { isBusiness: { $not: "$isBusiness" } } }];
-    user = await User.findByIdAndUpdate(userId, pipeline, {
-      new: true,
-    }).select(["-password", "-__v"]);
-
-    return res.send(user);
-  } catch (error) {
-    return handleError(res, 500, `Mongoose Error: ${error.message}`);
-  }
-};
-
 const deleteUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -158,7 +140,6 @@ const deleteUser = async (req, res) => {
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.updateUser = updateUser;
-exports.isBusinessUser = isBusinessUser;
 exports.deleteUser = deleteUser;
 exports.register = register;
 exports.login = login;

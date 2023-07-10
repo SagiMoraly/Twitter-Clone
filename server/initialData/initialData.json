@@ -1,131 +1,62 @@
 {
-  "cards": [
+  "posts": [
     {
-      "title": "first card",
-      "subtitle": "first card subtitle",
-      "description": "first card description",
-      "phone": "050-0000000",
-      "email": "first@gmail.com",
-      "web": "",
+      "content": "Post content",
       "image": {
         "url": "",
         "alt": ""
-      },
-      "address": {
-        "state": "",
-        "country": "israel",
-        "city": "tel-aviv",
-        "street": "nehmad meod",
-        "houseNumber": "5",
-        "zip": ""
       }
     },
     {
-      "title": "second card",
-      "subtitle": "second card subtitle",
-      "description": "second card description",
-      "phone": "050-0000000",
-      "email": "second@gmail.com",
-      "web": "",
+      "content": "Post content",
       "image": {
         "url": "",
         "alt": ""
-      },
-      "address": {
-        "state": "",
-        "country": "israel",
-        "city": "tel-aviv",
-        "street": "nehmad meod",
-        "houseNumber": "5",
-        "zip": ""
-      }
-    },
-    {
-      "title": "third card",
-      "subtitle": "third card subtitle",
-      "description": "third card description",
-      "phone": "050-0000000",
-      "email": "third@gmail.com",
-      "web": "",
-      "image": {
-        "url": "",
-        "alt": ""
-      },
-      "address": {
-        "state": "",
-        "country": "israel",
-        "city": "tel-aviv",
-        "street": "nehmad meod",
-        "houseNumber": "5",
-        "zip": ""
       }
     }
   ],
   "users": [
     {
-      "name": {
-        "first": "regular",
-        "last": "user"
-      },
-      "phone": "050-0000000",
-      "email": "regular@gmail.com",
+      "userName": "normal",
+      "email": "normal@gmail.com",
       "password": "Aa1234!",
-      "image": {
-        "url": "",
-        "alt": ""
-      },
-      "address": {
-        "state": "",
-        "country": "il",
-        "city": "tl",
-        "street": "bl",
-        "houseNumber": 5,
-        "zip": 0
+      "profile": {
+        "name": {
+          "first": "dr",
+          "last": "who"
+        },
+        "bio": "User bio",
+        "location": "Canada",
+        "profilePicture": {
+          "url": "",
+          "alt": ""
+        },
+        "backGrounProfilePicture": {
+          "url": "",
+          "alt": ""
+        }
       }
     },
     {
-      "name": {
-        "first": "business",
-        "last": "user"
-      },
-      "phone": "050-0000000",
-      "email": "business@gmail.com",
+      "userName": "normal",
+      "email": "normal@gmail.com",
       "password": "Aa1234!",
-      "image": {
-        "url": "",
-        "alt": ""
+      "profile": {
+        "name": {
+          "first": "neuro",
+          "last": "sama"
+        },
+        "bio": "User bio",
+        "location": "Canada",
+        "profilePicture": {
+          "url": "",
+          "alt": ""
+        },
+        "backGrounProfilePicture": {
+          "url": "",
+          "alt": ""
+        }
       },
-      "address": {
-        "state": "",
-        "country": "il",
-        "city": "tl",
-        "street": "bl",
-        "houseNumber": 5,
-        "zip": 0
-      },
-      "isBusiness": true
-    },
-    {
-      "name": {
-        "first": "admin",
-        "last": "user"
-      },
-      "phone": "050-0000000",
-      "email": "admin@gmail.com",
-      "password": "Aa1234!",
-      "image": {
-        "url": "",
-        "alt": ""
-      },
-      "address": {
-        "state": "",
-        "country": "il",
-        "city": "tl",
-        "street": "bl",
-        "houseNumber": 5,
-        "zip": 0
-      },
-      "isBusiness": true,
       "isAdmin": true
     }
   ]
