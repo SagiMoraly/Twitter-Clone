@@ -1,6 +1,6 @@
 const { generateUserPassword } = require("./bcrypt");
 
-const normalizeUser = rawUser => {
+const normalizeUser = (rawUser) => {
   const name = { ...rawUser.name, middle: rawUser.name.middle || "" };
 
   const image = {

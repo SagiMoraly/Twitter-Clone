@@ -15,7 +15,7 @@ const message = (regex, message, required = true) => {
   return Joi.string().ruleset.regex(regex).rule({ message: message }).allow("");
 };
 
-const validateCard = card => {
+const validateCard = (card) => {
   const schema = Joi.object({
     title: REQUIRED_FIELD,
     subtitle: REQUIRED_FIELD,
