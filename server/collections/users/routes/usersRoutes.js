@@ -6,16 +6,27 @@ const {
   getUsers,
   getUser,
   updateUser,
-  isBusinessUser,
   deleteUser,
 } = require("../controllers/usersController");
 const auth = require("../../../middleware/auth/authService");
 
 router.post("/", register);
 router.post("/login", login);
-router.get("/", auth, getUsers);
+router.get("/", auth, getUsers); //move to admin
 router.get("/:userId", auth, getUser);
 router.put("/:userId", auth, updateUser);
 router.delete("/:userId", auth, deleteUser);
 
 module.exports = router;
+
+// patch /api/users/follow: Follow another user/unfollow.
+// GET /api/users/:userId/followers: Get followers of a specific user.
+// GET /api/users/:userId/following: Get users followed by a specific user.
+// GET /api/users/:userId/posts: Get posts created by a specific user.
+
+///////////////done////////////////
+// DELETE /api/users/:userId: Delete user account by user ID.
+// PUT /api/users/:userId: Update user profile by user ID.
+// GET /api/users/:userId: Retrieve user profile by user ID.
+// POST /api/users/login: User login and authentication.
+// POST /api/users: Create a new user account.

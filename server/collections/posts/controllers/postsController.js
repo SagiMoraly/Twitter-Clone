@@ -8,19 +8,16 @@ const createPost = async (req, res) => {
     const post = req.body;
     const user = req.user;
 
-    if (!user.isBusiness)
-      throw new Error(
-        "You must be a business type user in order to create a new business post"
-      );
-
     const { error } = validatePost(post);
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
     const normalizedPost = normalizePost(post, user._id);
-
+    console.log(normalizedPost, 1);
     const postToDB = new Post(normalizedPost);
-    const postFromDB = await postToDB.save();
+    console.log(postToDB, 2);
+    const postFromDB = await postToDB.save(); //
+
     res.send(postFromDB);
   } catch (error) {
     return handleError(res, 500, `Mongoose Error: ${error.message}`);
@@ -29,7 +26,7 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await Card.find().sort({ createdAt: "descending" });
+    const posts = await Post.find().sort({ createdAt: "descending" });
     return res.send(posts);
   } catch (error) {
     return handleError(res, 500, `Mongoose Error: ${error.message}`);
@@ -109,10 +106,9 @@ const deletePost = async (req, res) => {
     const user = req.user;
 
     if (!user.isAdmin)
-      if (!user.isBusiness)
-        throw new Error(
-          "You must be a business or admin type user in order to delete a business post"
-        );
+      throw new Error(
+        "You must be a business or admin type user in order to delete a business post"
+      );
 
     const post = await Post.findByIdAndDelete(postId);
 

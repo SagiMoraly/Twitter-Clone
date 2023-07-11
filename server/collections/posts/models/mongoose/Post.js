@@ -25,7 +25,7 @@ const URL_REGEX =
 const imageSchema = new mongoose.Schema({
   url: {
     ...regexType(URL_REGEX, false),
-    validate: () => {
+    validate: function () {
       if (this.url && !this.alt) {
         throw new Error("alt field is required when url field is provided");
       }
@@ -36,37 +36,38 @@ const imageSchema = new mongoose.Schema({
     trim: true,
     minLength: 0,
     maxLength: 256,
-    required: () => {
+    required: function () {
       return !!this.url;
     },
   },
 });
 
-const commentSchema = new mongoose.Schema({
-  content: DEFAULT_VALIDATION,
-  timestamp: {
-    type: Date,
-    default: Date.now,
-  },
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-});
+// const commentSchema = new mongoose.Schema({
+//   content: DEFAULT_VALIDATION,
+//   timestamp: {
+//     type: Date,
+//     default: Date.now,
+//   },
+//   author: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     required: true,
+//   },
+// });
 
 const schema = new mongoose.Schema({
   content: DEFAULT_VALIDATION,
-  timestamp: {
-    type: Date,
-    default: Date.now,
-  },
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+
   likes: [String],
   image: imageSchema,
-  comments: [commentSchema],
+  comments: [Object],
   tags: [String],
 });
 

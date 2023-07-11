@@ -8,6 +8,7 @@ const User = require("../models/mongoose/User");
 
 const register = async (req, res) => {
   try {
+    console.log(1);
     const user = req.body;
     const { email } = user;
 
@@ -19,7 +20,6 @@ const register = async (req, res) => {
     if (isUserExistInDB) throw new Error("User already registered");
 
     const normalizedUser = normalizeUser(user);
-
     const userForBD = new User(normalizedUser);
     const userFromDB = await userForBD.save();
     res.send(userFromDB);

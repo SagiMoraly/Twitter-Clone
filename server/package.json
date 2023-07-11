@@ -1,14 +1,14 @@
 {
-  "name": "business_cards_app",
+  "name": "twitter_clone_app",
   "version": "3.0.0",
-  "description": "Business cards app with MERN",
+  "description": "Twitter clone app",
   "main": "server.js",
   "scripts": {
     "start": "export || cross-env NODE_ENV=production&& node .",
     "test": "node test.js",
     "dev": "export || cross-env NODE_ENV=development&& nodemon ."
   },
-  "author": "David Yakin",
+  "author": "Sagi moraly",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

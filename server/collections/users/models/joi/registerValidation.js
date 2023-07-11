@@ -25,7 +25,7 @@ const PROFILE = Joi.object()
     bio: Joi.string().min(2).max(256).allow(""),
     location: Joi.string().min(2).max(256).allow(""),
     profilePicture: IMAGE,
-    backGrounProfilePicture: IMAGE,
+    backGroundProfilePicture: IMAGE,
   })
   .required();
 

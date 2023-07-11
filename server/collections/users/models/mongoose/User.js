@@ -31,7 +31,6 @@ const Profile = new mongoose.Schema({
   name: Name,
   bio: {
     type: String,
-    minLength: 2,
     maxLength: 256,
     trim: true,
   },
@@ -42,7 +41,7 @@ const Profile = new mongoose.Schema({
     default: "",
   },
   profilePicture: Image,
-  backGrounProfilePicture: Image,
+  backGroundProfilePicture: Image,
 });
 
 const schema = new mongoose.Schema({

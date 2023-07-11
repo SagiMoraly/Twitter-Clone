@@ -9,12 +9,12 @@ const normalizeUser = (rawUser) => {
     alt: rawUser.profile.profilePicture.alt || "User image",
   };
 
-  const backGrounProfilePicture = {
-    ...rawUser.profile.backGrounProfilePicture,
+  const backGroundProfilePicture = {
+    ...rawUser.profile.backGroundProfilePicture,
     url:
-      rawUser.profile.backGrounProfilePicture.url ||
+      rawUser.profile.backGroundProfilePicture.url ||
       "https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=png",
-    alt: rawUser.profile.backGrounProfilePicture.alt || "User profile image",
+    alt: rawUser.profile.backGroundProfilePicture.alt || "User profile image",
   };
 
   const profile = {
@@ -22,7 +22,7 @@ const normalizeUser = (rawUser) => {
     bio: rawUser.profile.bio || "",
     location: rawUser.profile.location || "",
     profilePicture: profilePicture,
-    backGrounProfilePicture: backGrounProfilePicture,
+    backGroundProfilePicture: backGroundProfilePicture,
   };
 
   const user = {
