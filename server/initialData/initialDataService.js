@@ -18,9 +18,7 @@ const generateInitialPosts = async () => {
       const normalizedPost = await normalizePost(post, userId);
       const postToDB = new Post(normalizedPost);
       await postToDB.save();
-      console.log(
-        chalk.greenBright(`Generate post '${post.title}' successfully`)
-      );
+      console.log(chalk.greenBright(`Generate post '${"post"}' successfully`));
     } catch (error) {
       console.log(
         chalk.redBright(`Initial Data Generate Post Error: ${error.message}`)
@@ -42,11 +40,7 @@ const generateInitialUsers = async () => {
       const userForBD = new User(normalizedUser);
       await userForBD.save();
       console.log(
-        chalk.greenBright(
-          `Generate User '${
-            user.name.first + " " + user.name.last
-          }' successfully`
-        )
+        chalk.greenBright(`Generate User '${user.userName}' successfully`)
       );
     } catch (error) {
       console.log(

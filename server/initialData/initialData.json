@@ -25,7 +25,7 @@
           "first": "dr",
           "last": "who"
         },
-        "bio": "User bio",
+        "bio": "not now",
         "location": "Canada",
         "profilePicture": {
           "url": "",
@@ -38,8 +38,8 @@
       }
     },
     {
-      "userName": "normal",
-      "email": "normal@gmail.com",
+      "userName": "imadmin",
+      "email": "imadmin@gmail.com",
       "password": "Aa1234!",
       "profile": {
         "name": {

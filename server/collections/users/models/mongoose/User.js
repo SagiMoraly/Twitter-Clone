@@ -29,7 +29,12 @@ const Image = new mongoose.Schema({
 
 const Profile = new mongoose.Schema({
   name: Name,
-  bio: DEFAULT_VALIDATION,
+  bio: {
+    type: String,
+    minLength: 2,
+    maxLength: 256,
+    trim: true,
+  },
   location: {
     type: String,
     maxLength: 256,
