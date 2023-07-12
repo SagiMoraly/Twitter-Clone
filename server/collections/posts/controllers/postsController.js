@@ -50,7 +50,7 @@ const getPost = async (req, res) => {
 const getMyPosts = async (req, res) => {
   try {
     const { userId } = req.params;
-    const post = await Post.find({ user_id: userId });
+    const post = await Post.find({ author: userId });
     return res.send(post);
   } catch (error) {
     return handleError(res, 500, `Mongoose Error: ${error.message}`);
