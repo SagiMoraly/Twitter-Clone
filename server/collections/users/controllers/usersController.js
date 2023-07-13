@@ -213,7 +213,6 @@ const followingUser = async (req, res) => {
     let users = await User.find();
     const theUser = users.find((user) => user._id.toString() === userId);
     const listOfFollowing = theUser.following;
-    console.log(users);
     const filteredArray = users.filter((user) =>
       listOfFollowing.includes(user._id)
     );

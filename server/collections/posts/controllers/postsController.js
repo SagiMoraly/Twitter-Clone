@@ -103,15 +103,16 @@ const deletePost = async (req, res) => {
     const { postId } = req.params;
     const user = req.user;
 
-    if (!user.isAdmin)
-      throw new Error(
-        "You must be a business or admin type user in order to delete a business post"
-      );
-
     const post = await Post.findByIdAndDelete(postId);
 
     if (!post)
       throw new Error("A post with this ID cannot be found in the database");
+
+    if (!user.isAdmin)
+      if (user._id != post.author)
+        throw new Error(
+          "You must be a business or admin type user in order to delete a business post"
+        );
 
     return res.send(post);
   } catch (error) {
