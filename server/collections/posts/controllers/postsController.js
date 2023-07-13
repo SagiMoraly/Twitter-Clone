@@ -1,4 +1,5 @@
 const { handleError } = require("../../../utils/handleErrors");
+const User = require("../../users/models/mongoose/User");
 const normalizePost = require("../helpers/normalizePost");
 const validatePost = require("../models/joi/validatePost");
 const Post = require("../models/mongoose/Post");
@@ -120,6 +121,23 @@ const deletePost = async (req, res) => {
   }
 };
 
+const getFeed = async (req, res) => {
+  try {
+    const user = req.user;
+    const myUser = await User.findById(user._id);
+    const following = myUser.following;
+
+    const posts = await Post.find().sort({ timestamp: "-1" });
+    let feed = posts.filter((post) =>
+      following.includes(post.author.toHexString())
+    );
+
+    return res.send(feed);
+  } catch (error) {
+    return handleError(res, 500, `Mongoose Error: ${error.message}`);
+  }
+};
+
 exports.getPosts = getPosts;
 exports.getPost = getPost;
 exports.deletePost = deletePost;
@@ -127,3 +145,4 @@ exports.getMyPosts = getMyPosts;
 exports.updatePost = updatePost;
 exports.likePost = likePost;
 exports.createPost = createPost;
+exports.getFeed = getFeed;

@@ -7,6 +7,7 @@ const {
   updatePost,
   likePost,
   deletePost,
+  getFeed,
 } = require("../controllers/postsController");
 const {
   createComment,
@@ -15,6 +16,7 @@ const {
 const auth = require("../../../middleware/auth/authService");
 const router = express.Router();
 
+router.get("/feed", auth, getFeed);
 router.get("/", getPosts);
 router.post("/", auth, createPost);
 router.get("/:postId", getPost);
@@ -28,7 +30,7 @@ router.delete("/:postId/:commentId", auth, deleteComment);
 module.exports = router;
 //not working
 
-// GET /api/posts/:postId/comments: Get comments for a specific post.?
+// GET /api/posts/:postId/comments: Get comments for a specific post.?useless ithink
 // GET /api/posts/feed: Get a feed of posts from followed users.
 
 ///////////////done//////////////
