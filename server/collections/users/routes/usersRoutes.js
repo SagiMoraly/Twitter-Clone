@@ -7,10 +7,12 @@ const {
   getUser,
   updateUser,
   deleteUser,
+} = require("../controllers/usersController");
+const {
   followUser,
   followersUser,
   followingUser,
-} = require("../controllers/usersController");
+} = require("../controllers/followUsersController");
 const auth = require("../../../middleware/auth/authService");
 
 router.post("/", register);

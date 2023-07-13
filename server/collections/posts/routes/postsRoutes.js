@@ -31,9 +31,9 @@ module.exports = router;
 //not working
 
 // GET /api/posts/:postId/comments: Get comments for a specific post.?useless ithink
-// GET /api/posts/feed: Get a feed of posts from followed users.
 
 ///////////////done//////////////
+// GET /api/posts/feed: Get a feed of posts from followed users.
 // DELETE /api/posts/:postId/comment/:commentId: Delete a comment from a post.
 // POST /api/posts/:postId/comment: Add a comment to a post.
 // GET /api/posts/feed: Get my posts.
