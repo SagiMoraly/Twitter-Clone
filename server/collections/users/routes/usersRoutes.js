@@ -8,6 +8,8 @@ const {
   updateUser,
   deleteUser,
   followUser,
+  followersUser,
+  followingUser,
 } = require("../controllers/usersController");
 const auth = require("../../../middleware/auth/authService");
 
@@ -18,14 +20,16 @@ router.get("/:userId", auth, getUser);
 router.put("/:userId", auth, updateUser);
 router.delete("/:userId", auth, deleteUser);
 router.patch("/follow/:userId", auth, followUser);
+router.get("/followers/:userId", auth, followersUser);
+router.get("/following/:userId", auth, followingUser);
 
 module.exports = router;
 
-// GET /api/users/:userId/followers: Get followers of a specific user.
-// GET /api/users/:userId/following: Get users followed by a specific user.
 // GET /api/users/:userId/posts: Get posts created by a specific user.
 
 ///////////////done////////////////
+// GET /api/users/:userId/followers: Get followers of a specific user.
+// GET /api/users/:userId/following: Get users followed by a specific user.
 // patch /api/users/follow/:userId: Follow another user/unfollow. the user followed get a follower
 // DELETE /api/users/:userId: Delete user account by user ID.
 // PUT /api/users/:userId: Update user profile by user ID.

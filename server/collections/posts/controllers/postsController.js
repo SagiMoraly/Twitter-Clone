@@ -13,10 +13,8 @@ const createPost = async (req, res) => {
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
     const normalizedPost = normalizePost(post, user._id);
-    console.log(normalizedPost, 1);
     const postToDB = new Post(normalizedPost);
-    console.log(postToDB, 2);
-    const postFromDB = await postToDB.save(); //
+    const postFromDB = await postToDB.save();
 
     res.send(postFromDB);
   } catch (error) {

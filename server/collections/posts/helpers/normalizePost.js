@@ -5,7 +5,6 @@ const normalizePost = (rawPost, author) => {
     alt: rawPost.image?.alt || "",
   };
 
-  console.log(rawPost.image, "no problem here", rawPost, author);
   const post = {
     ...rawPost,
     image,

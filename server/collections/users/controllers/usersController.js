@@ -137,6 +137,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
+//if a user is deleted
 const followUser = async (req, res) => {
   try {
     const followingUserId = req.user._id;
@@ -189,6 +190,40 @@ const followUser = async (req, res) => {
   }
 };
 
+const followersUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    let users = await User.find();
+    const theUser = users.find((user) => user._id.toString() === userId);
+    const listOfFollowers = theUser.followers;
+
+    const filteredArray = users.filter((user) =>
+      listOfFollowers.includes(user._id)
+    );
+
+    return res.send(filteredArray);
+  } catch (error) {
+    return handleError(res, 500, `Mongoose Error: ${error.message}`);
+  }
+};
+
+const followingUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    let users = await User.find();
+    const theUser = users.find((user) => user._id.toString() === userId);
+    const listOfFollowing = theUser.following;
+    console.log(users);
+    const filteredArray = users.filter((user) =>
+      listOfFollowing.includes(user._id)
+    );
+
+    return res.send(filteredArray);
+  } catch (error) {
+    return handleError(res, 500, `Mongoose Error: ${error.message}`);
+  }
+};
+
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.updateUser = updateUser;
@@ -196,3 +231,5 @@ exports.deleteUser = deleteUser;
 exports.register = register;
 exports.login = login;
 exports.followUser = followUser;
+exports.followersUser = followersUser;
+exports.followingUser = followingUser;
