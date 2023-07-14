@@ -3,7 +3,7 @@ const {
   getPosts,
   getPost,
   createPost,
-  getMyPosts,
+  getUserPosts,
   updatePost,
   likePost,
   deletePost,
@@ -20,7 +20,7 @@ router.get("/feed", auth, getFeed);
 router.get("/", getPosts);
 router.post("/", auth, createPost);
 router.get("/:postId", getPost);
-router.get("/my-posts/:userId", getMyPosts);
+router.get("/postsUser/:userId", getUserPosts);
 router.put("/:postId", auth, updatePost);
 router.patch("/:postId", auth, likePost);
 router.delete("/:postId", auth, deletePost);
@@ -30,9 +30,8 @@ router.delete("/:postId/:commentId", auth, deleteComment);
 module.exports = router;
 //not working
 
-// GET /api/posts/:postId/comments: Get comments for a specific post.?useless ithink
-
 ///////////////done//////////////
+// GET /api/users/:userId/posts: Get posts created by a specific user.
 // GET /api/posts/feed: Get a feed of posts from followed users.
 // DELETE /api/posts/:postId/comment/:commentId: Delete a comment from a post.
 // POST /api/posts/:postId/comment: Add a comment to a post.

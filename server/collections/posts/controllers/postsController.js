@@ -46,7 +46,7 @@ const getPost = async (req, res) => {
   }
 };
 
-const getMyPosts = async (req, res) => {
+const getUserPosts = async (req, res) => {
   try {
     const { userId } = req.params;
     const post = await Post.find({ author: userId });
@@ -141,7 +141,7 @@ const getFeed = async (req, res) => {
 exports.getPosts = getPosts;
 exports.getPost = getPost;
 exports.deletePost = deletePost;
-exports.getMyPosts = getMyPosts;
+exports.getUserPosts = getUserPosts;
 exports.updatePost = updatePost;
 exports.likePost = likePost;
 exports.createPost = createPost;

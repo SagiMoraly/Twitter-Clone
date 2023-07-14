@@ -27,8 +27,6 @@ router.get("/following/:userId", auth, followingUser);
 
 module.exports = router;
 
-// GET /api/users/:userId/posts: Get posts created by a specific user.
-
 ///////////////done////////////////
 // GET /api/users/:userId/followers: Get followers of a specific user.
 // GET /api/users/:userId/following: Get users followed by a specific user.
