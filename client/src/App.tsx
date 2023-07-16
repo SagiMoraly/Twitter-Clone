@@ -4,6 +4,7 @@ import Router from "./routes/Router";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./extras/providers/ThemeProvider";
 import { UserProvider } from "./layout/collections/users/providers/UserProvider";
+import { TwitterLayout } from "./layout/twitterLayout/TwitterLayout";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
       <BrowserRouter>
         <ThemeProvider>
           <UserProvider>
-            <Router />
+            <TwitterLayout>
+              <Router />
+            </TwitterLayout>
           </UserProvider>
         </ThemeProvider>
       </BrowserRouter>

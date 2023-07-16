@@ -1,0 +1,39 @@
+.app {
+  display: flex;
+  overflow-x: auto;
+  height: 100vh;
+}
+
+.navbar {
+  width: 950px;
+  background-color: #f0f0f0;
+
+  position: sticky;
+  top: 0;
+}
+
+.main-content {
+  min-width: 700px;
+  max-width: 700px;
+
+  padding: 12px;
+  background-color: #ffffff;
+}
+
+.search {
+  width: 800px;
+  background-color: #f0f0f0;
+  position: sticky;
+  top: 0;
+}
+
+@media (max-width: 1100px) {
+  .search {
+    display: none;
+  }
+}
+@media (max-width: 790px) {
+  .navbar {
+    display: none;
+  }
+}
