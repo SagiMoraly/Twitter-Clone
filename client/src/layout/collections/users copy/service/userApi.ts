@@ -1,7 +1,7 @@
 import axios from "axios";
 import UserInterface from "../../users/models/interfaces/UserInterface";
 import UserType, { Login, UserRegistered } from "../models/types/userType";
-// import { NormalizedEditUser } from "../../cards/models/types/userTypes";
+import { NormalizedEditUser } from "../../cards/models/types/userTypes";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8181";
 
@@ -39,18 +39,18 @@ export const getUser = async (userId: string) => {
   }
 };
 
-// export const editUser = async (normalizedUser: NormalizedEditUser) => {
-//   try {
-//     const UserToServer = { ...normalizedUser };
-//     // delete UserToServer._id;
-//     // console.log(UserToServer);
+export const editUser = async (normalizedUser: NormalizedEditUser) => {
+  try {
+    const UserToServer = { ...normalizedUser };
+    // delete UserToServer._id;
+    // console.log(UserToServer);
 
-//     const { data } = await axios.put<UserInterface>(
-//       `${apiUrl}/Users/${normalizedUser._id}`,
-//       UserToServer
-//     );
-//     return data;
-//   } catch (error) {
-//     if (axios.isAxiosError(error)) return Promise.reject(error.message);
-//   }
-// };
+    const { data } = await axios.put<UserInterface>(
+      `${apiUrl}/Users/${normalizedUser._id}`,
+      UserToServer
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+  }
+};

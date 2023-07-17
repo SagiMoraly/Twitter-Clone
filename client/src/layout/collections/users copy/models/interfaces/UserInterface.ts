@@ -1,6 +1,6 @@
 import AddressInterface from "./AddressInterface";
 import NameInterface from "./nameInterface";
-// import ImageInterface from "../../../cards/models/interfaces/ImageInterface";
+import ImageInterface from "../../../cards/models/interfaces/ImageInterface";
 
 interface UserInterface {
   _id: string;
@@ -9,7 +9,7 @@ interface UserInterface {
   email: string;
   address: AddressInterface;
   password: string;
-  // image: ImageInterface;
+  image: ImageInterface;
   isBusiness: boolean;
 }
 

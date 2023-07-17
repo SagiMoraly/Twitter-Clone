@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Feed } from "../layout/Feed";
+import { Feed } from "../layout/pages/Feed";
 
 const Router = () => {
   return (
