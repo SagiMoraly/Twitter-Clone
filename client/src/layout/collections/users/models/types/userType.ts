@@ -75,4 +75,41 @@ export type UserRegistered = {
   _id: string;
 };
 
+export type NormalizedEditUser = {
+  _id: string;
+  userName: string;
+  email: string;
+  password: string;
+  profile: {
+    name: {
+      first: string;
+      last: string;
+    };
+    bio: string;
+    location: string;
+    ProfilePicture: {
+      url: string;
+      alt: string;
+    };
+    BackGrounProfilePicture: {
+      url: string;
+      alt: string;
+    };
+  };
+};
+
+export type UserFromClientType = {
+  first: string;
+  last: string;
+  userName: string;
+  email: string;
+  password: string;
+  bio: string;
+  location: string;
+  url: string;
+  alt: string;
+};
+
 export default UserType;
+
+export type CreateUserErrors = Partial<UserFromClientType>;

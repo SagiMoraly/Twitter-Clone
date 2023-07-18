@@ -1,14 +1,14 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../collections/users copy/providers/UserProvider";
-import useHandleUsers from "../hooks/useHandleUsers";
-import useForm from "../../forms/hooks/useForm";
-import initialLoginForm from "../helpers/initialForms/initialLoginForm";
-import loginSchema from "../models/Joi/loginSchema";
+import { useUser } from "../collections/users/providers/UserProvider";
+import useHandleUsers from "../collections/users/hooks/useHandleUsers";
+import useForm from "../../extras/forms/hooks/useForm";
+import initialLoginForm from "../collections/users/helpers/initialForms/initialLoginForm";
+import loginSchema from "../collections/users/models/Joi/loginSchema";
 import Container from "@mui/material/Container";
-import Form from "../../forms/components/Form";
-import Input from "../../forms/components/Input";
-import FormLink from "../../forms/components/FormLink";
+import Form from "../../extras/forms/components/Form";
+import Input from "../../extras/forms/components/Input";
+import FormLink from "../../extras/forms/components/FormLink";
 
 const LoginPage = () => {
   const { user } = useUser();
@@ -20,7 +20,7 @@ const LoginPage = () => {
     handleLogin
   );
 
-  if (user) return <Navigate replace to={ROUTES.CARDS} />;
+  if (user) return <Navigate replace to={"/"} />;
 
   return (
     <Container
@@ -37,7 +37,7 @@ const LoginPage = () => {
         onFormChange={rest.validateForm}
         title="login"
         styles={{ maxWidth: "450px" }}
-        to={ROUTES.CARDS}
+        to={"/"}
       >
         <Input
           label="email"
@@ -55,7 +55,7 @@ const LoginPage = () => {
           onInputChange={rest.handleInputChange}
           data={value.data}
         />
-        <FormLink text="Did not registered yet?" to={ROUTES.SIGNUP} />
+        <FormLink text="Did not registered yet?" to={"/signup"} />
       </Form>
     </Container>
   );

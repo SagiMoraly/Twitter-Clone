@@ -8,9 +8,9 @@ const initialSignupForm = {
   location: "",
   url: "",
   alt: "",
-  followers: "",
-  following: "",
-  isAdmin: false,
+  // followers: "",
+  // following: "",
+  // isAdmin: false,
 };
 
 export default initialSignupForm;

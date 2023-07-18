@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent } from "react";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Grid from "@mui/material/Grid";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
+// import Grid from "@mui/material/Grid";
 import Form from "../../../../extras/forms/components/Form";
 import Input from "../../../../extras/forms/components/Input";
 import Joi from "joi";
@@ -41,21 +41,20 @@ const UserForm: FC<Props> = ({
       to={"/"}
     >
       <Input
+        name="userName"
+        label="userName"
+        error={errors.userName}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+      />
+      <Input
         name="first"
         label="first name"
         error={errors.first}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="middle"
-        label="middle name"
-        error={errors.middle}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
       />
       <Input
         name="last"
@@ -66,13 +65,22 @@ const UserForm: FC<Props> = ({
         breakPoints={{ sm: 6 }}
       />
       <Input
-        name="phone"
-        label="phone"
-        type="phone"
-        error={errors.phone}
+        name="bio"
+        label="bio"
+        error={errors.bio}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
+        required={false}
+      />
+      <Input
+        name="location"
+        label="location"
+        error={errors.location}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+        required={false}
       />
       <Input
         name="email"
@@ -110,71 +118,6 @@ const UserForm: FC<Props> = ({
         breakPoints={{ sm: 6 }}
         required={false}
       />
-      <Input
-        name="state"
-        label="state"
-        error={errors.state}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-      />
-      <Input
-        label="country"
-        name="country"
-        error={errors.country}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="city"
-        label="city"
-        error={errors.city}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="street"
-        label="street"
-        error={errors.street}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="houseNumber"
-        label="house Number"
-        type="number"
-        error={errors.houseNumber}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="zip"
-        label="zip"
-        error={errors.zip}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Grid item>
-        <FormControlLabel
-          name="isBusiness"
-          control={
-            <Checkbox
-              value={data.isBusiness}
-              color="primary"
-              onChange={(e) =>
-                setData({ ...data, isBusiness: !!e.target.checked })
-              }
-            />
-          }
-          label="Signup as business"
-        />
-      </Grid>
       <FormLink text="Already registered?" to={"login"} />
     </Form>
   );

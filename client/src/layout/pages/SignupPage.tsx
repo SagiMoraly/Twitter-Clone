@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../collections/users copy/providers/UserProvider";
-import useHandleUsers from "../collections/users copy/hooks/useHandleUsers";
+import { useUser } from "../collections/users/providers/UserProvider";
+import useHandleUsers from "../collections/users/hooks/useHandleUsers";
 import useForm from "../../extras/forms/hooks/useForm";
-import initialSignupForm from "../collections/users copy/helpers/initialForms/initialSignupForm";
-import signupSchema from "../collections/users copy/models/Joi/signupSchema";
+import initialSignupForm from "../collections/users/helpers/initialForms/initialSignupForm";
+import signupSchema from "../collections/users/models/Joi/signupSchema";
 import Container from "@mui/material/Container";
-import UserForm from "../collections/users copy/components/UserForm";
+import UserForm from "../collections/users/components/UserForm";
 
 const SignupPage = () => {
   const { user } = useUser();

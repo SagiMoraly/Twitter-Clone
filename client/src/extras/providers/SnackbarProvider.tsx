@@ -34,7 +34,8 @@ export const SnackbarProvider: React.FC<Props> = ({ children }) => {
         anchorOrigin={{ vertical: "top", horizontal: "right" }}
         open={isSnackOpen}
         onClose={() => setOpenSnack(false)}
-        autoHideDuration={5000}>
+        autoHideDuration={5000}
+      >
         <Alert severity={snackColor} variant={snackVariant}>
           {snackMessage}
         </Alert>
