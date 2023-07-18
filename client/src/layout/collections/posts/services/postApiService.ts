@@ -1,12 +1,12 @@
 import axios, { AxiosResponse } from "axios";
-import CardInterface from "../models/interfaces/PostInterface";
-import { NormalizedEditCard } from "../models/types/postTypes";
+import PostInterface from "../models/interfaces/PostInterface";
+import { NormalizedEditPost } from "../models/types/postTypes";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8181";
 
-export const getCards = async () => {
+export const getPosts = async () => {
   try {
-    const { data } = await axios.get<CardInterface[]>(`${apiUrl}/cards`);
+    const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts`);
 
     return Promise.resolve(data);
   } catch (error) {
@@ -16,10 +16,10 @@ export const getCards = async () => {
   }
 };
 
-export const getFavCards = async (userId: string) => {
+export const getFavPosts = async (userId: string) => {
   try {
-    const { data } = await axios.get<CardInterface[]>(`${apiUrl}/cards`);
-    const filteredData = data.filter((card) => card.likes.includes(userId));
+    const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts`);
+    const filteredData = data.filter((post) => post.likes.includes(userId));
 
     return Promise.resolve(filteredData);
   } catch (error) {
@@ -29,10 +29,10 @@ export const getFavCards = async (userId: string) => {
   }
 };
 
-export const getMyCards = async () => {
+export const getMyPosts = async () => {
   try {
-    const { data } = await axios.get<CardInterface[]>(
-      `${apiUrl}/cards/my-cards`
+    const { data } = await axios.get<PostInterface[]>(
+      `${apiUrl}/posts/my-posts`
     );
     return Promise.resolve(data);
   } catch (error) {
@@ -41,10 +41,10 @@ export const getMyCards = async () => {
   }
 };
 
-export const getCard = async (cardId: string) => {
+export const getPost = async (postId: string) => {
   try {
-    const { data } = await axios.get<CardInterface>(
-      `${apiUrl}/cards/${cardId}`
+    const { data } = await axios.get<PostInterface>(
+      `${apiUrl}/posts/${postId}`
     );
     return Promise.resolve(data);
   } catch (error) {
@@ -53,31 +53,31 @@ export const getCard = async (cardId: string) => {
   }
 };
 
-export const createCard = async (normalizedCard: object) => {
+export const createPost = async (normalizedPost: object) => {
   try {
-    const { data } = await axios.post(`${apiUrl}/cards`, normalizedCard);
+    const { data } = await axios.post(`${apiUrl}/posts`, normalizedPost);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);
   }
 };
 
-export const deleteCard = async (cardId: string) => {
+export const deletePost = async (postId: string) => {
   try {
-    const { data } = await axios.delete(`${apiUrl}/cards/${cardId}`);
+    const { data } = await axios.delete(`${apiUrl}/posts/${postId}`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);
   }
 };
 
-export const editCard = async (normalizedCard: NormalizedEditCard) => {
+export const editPost = async (normalizedPost: NormalizedEditPost) => {
   try {
-    const cardToServer = { ...normalizedCard };
-    delete cardToServer._id;
-    const { data } = await axios.put<CardInterface>(
-      `${apiUrl}/cards/${normalizedCard._id}`,
-      cardToServer
+    const postToServer = { ...normalizedPost };
+    delete postToServer._id;
+    const { data } = await axios.put<PostInterface>(
+      `${apiUrl}/posts/${normalizedPost._id}`,
+      postToServer
     );
     return data;
   } catch (error) {
@@ -85,10 +85,10 @@ export const editCard = async (normalizedCard: NormalizedEditCard) => {
   }
 };
 
-export const addFavCard = async (cardId: string, userId: string) => {
+export const addFavPost = async (postId: string, userId: string) => {
   try {
-    const response: AxiosResponse<CardInterface> = await axios.patch(
-      `${apiUrl}/cards/${cardId}`,
+    const response: AxiosResponse<PostInterface> = await axios.patch(
+      `${apiUrl}/posts/${postId}`,
       {
         $push: { likes: userId },
       }
@@ -103,10 +103,10 @@ export const addFavCard = async (cardId: string, userId: string) => {
   }
 };
 
-export const removeFavCard = async (cardId: string, userId: string) => {
+export const removeFavPost = async (postId: string, userId: string) => {
   try {
-    const response: AxiosResponse<CardInterface> = await axios.patch(
-      `${apiUrl}/cards/${cardId}`,
+    const response: AxiosResponse<PostInterface> = await axios.patch(
+      `${apiUrl}/posts/${postId}`,
       {
         $pull: { likes: userId },
       }

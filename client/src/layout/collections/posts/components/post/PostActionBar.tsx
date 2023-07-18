@@ -6,26 +6,25 @@ import EditIcon from "@mui/icons-material/Edit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useUser } from "../../../users/providers/UserProvider";
-import CardDeleteDialog from "./PostDeleteDialog";
+import PostDeleteDialog from "./PostDeleteDialog";
 import { useNavigate } from "react-router-dom";
-import ROUTES from "../../../routes/routesModel";
-import { addFavCard, removeFavCard } from "../../services/postApiService";
+import { addFavPost, removeFavPost } from "../../services/postApiService";
 
-type CardActionBarProps = {
+type PostActionBarProps = {
   likes: string[];
-  cardId: string;
-  cardUserId: string;
+  postId: string;
+  postUserId: string;
   onDelete: (id: string) => void;
   onLike: () => void;
 };
 
-const CardActionBar = ({
+const PostActionBar = ({
   likes,
-  cardId,
-  cardUserId,
+  postId,
+  postUserId,
   onDelete,
   onLike,
-}: CardActionBarProps) => {
+}: PostActionBarProps) => {
   const [isDialogOpen, setDialog] = useState(false);
   const { user } = useUser();
   const [hasUserLiked, setHasUserLiked] = useState(
@@ -46,18 +45,18 @@ const CardActionBar = ({
     setDialog(false);
   };
 
-  const handleDeleteCard = () => {
+  const handleDeletePost = () => {
     handleDialog();
-    onDelete(cardId);
+    onDelete(postId);
   };
 
   const addOrRemove = async () => {
     let resultsOfLike = false;
     if (user) {
       if (hasUserLiked) {
-        resultsOfLike = await removeFavCard(cardId, user?._id);
+        resultsOfLike = await removeFavPost(postId, user?._id);
       } else {
-        resultsOfLike = await addFavCard(cardId, user?._id);
+        resultsOfLike = await addFavPost(postId, user?._id);
       }
       resultsOfLike && setHasUserLiked(!hasUserLiked);
       onLike();
@@ -71,19 +70,19 @@ const CardActionBar = ({
         sx={{ pt: 0, justifyContent: "space-between" }}
       >
         <Box>
-          {user && (user._id === cardUserId || user.isAdmin) && (
+          {user && (user._id === postUserId || user.isAdmin) && (
             <IconButton
-              aria-label="delete card"
+              aria-label="delete post"
               onClick={() => handleDialog("open")}
             >
               <DeleteIcon />
             </IconButton>
           )}
 
-          {user?._id === cardUserId && (
+          {user?._id === postUserId && (
             <IconButton
-              aria-label="edit card"
-              onClick={() => navigate(`${ROUTES.EDIT_CARD}/${cardId}`)}
+              aria-label="edit post"
+              onClick={() => navigate(`${"/edit"}/${postId}`)}
             >
               <EditIcon />
             </IconButton>
@@ -106,13 +105,13 @@ const CardActionBar = ({
           )}
         </Box>
       </CardActions>
-      <CardDeleteDialog
+      <PostDeleteDialog
         isDialogOpen={isDialogOpen}
         onChangeDialog={handleDialog}
-        onDelete={handleDeleteCard}
+        onDelete={handleDeletePost}
       />
     </>
   );
 };
 
-export default React.memo(CardActionBar);
+export default React.memo(PostActionBar);

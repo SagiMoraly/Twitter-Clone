@@ -1,26 +1,14 @@
-import CardInterface from "../../models/interfaces/PostInterface";
-import { CardMapToModelType } from "../../models/types/postTypes";
+import PostInterface from "../../models/interfaces/PostInterface";
+import { PostMapToModelType } from "../../models/types/postTypes";
 
-const mapCardToModel = (card: CardInterface): CardMapToModelType => {
+const mapPostToModel = (Post: PostInterface): PostMapToModelType => {
   return {
-    _id: card._id,
-    title: card.title,
-    subtitle: card.subtitle,
-    description: card.description,
-    phone: card.phone,
-    email: card.email,
-    webUrl: card.web!,
-    imageUrl: card.image.url,
-    imageAlt: card.image.alt,
-    state: card.address.state!,
-    country: card.address.country,
-    city: card.address.city,
-    street: card.address.street,
-    houseNumber: String(card.address.houseNumber!),
-    zip: String(card.address.zip!),
-    user_id: card.user_id,
-    bizNumber: card.bizNumber,
+    _id: Post._id,
+    content: Post.content,
+    url: Post.image.url,
+    alt: Post.image.alt,
+    author: Post.author,
   };
 };
 
-export default mapCardToModel;
+export default mapPostToModel;

@@ -1,26 +1,13 @@
-import { CardFromClientType } from "../../models/types/postTypes";
+import { PostFromClientType } from "../../models/types/postTypes";
 
-const normalizeCard = (card: CardFromClientType) => {
+const normalizePost = (post: PostFromClientType) => {
   return {
-    title: card.title,
-    subtitle: card.subtitle,
-    description: card.description,
-    phone: card.phone,
-    email: card.email,
-    web: card.webUrl,
+    content: post.content,
     image: {
-      url: card.imageUrl,
-      alt: card.imageAlt,
-    },
-    address: {
-      state: card.state,
-      country: card.country,
-      city: card.city,
-      street: card.street,
-      houseNumber: +card.houseNumber,
-      zip: +card.zip,
+      url: post.url,
+      alt: post.alt,
     },
   };
 };
 
-export default normalizeCard;
+export default normalizePost;

@@ -1,12 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 
-type CardRowProps = {
+type PostRowProps = {
   title: string;
   content: string;
 };
 
-const CardRow = ({ title, content }: CardRowProps) => {
+const PostRow = ({ title, content }: PostRowProps) => {
   return (
     <Typography variant="body2" color="text.secondary">
       <Typography fontWeight={700} component="span">
@@ -17,4 +17,4 @@ const CardRow = ({ title, content }: CardRowProps) => {
   );
 };
 
-export default CardRow;
+export default PostRow;

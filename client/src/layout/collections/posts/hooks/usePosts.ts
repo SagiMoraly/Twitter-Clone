@@ -1,35 +1,34 @@
 import { useCallback, useState, useMemo } from "react";
 import {
-  createCard,
-  deleteCard,
-  editCard,
-  getCard,
-  getCards,
-  getMyCards,
-  getFavCards,
+  createPost,
+  deletePost,
+  editPost,
+  getPost,
+  getPosts,
+  getMyPosts,
+  getFavPosts,
 } from "../services/postApiService";
-import useAxios from "../../hooks/useAxios";
-// import normalizeCard from "./../helpers/normalization/normalizeCard";
+import useAxios from "../../../../extras/hooks/useAxios";
+// import normalizePost from "./../helpers/normalization/normalizePost";
 import { useNavigate } from "react-router-dom";
-import { useSnack } from "../../providers/SnackbarProvider";
-import ROUTES from "../../routes/routesModel";
-import CardInterface from "../models/interfaces/PostInterface";
-import normalizeCard from "../helpers/normalizations/normalizePost";
+import { useSnack } from "../../../../extras/providers/SnackbarProvider";
+import PostInterface from "../models/interfaces/PostInterface";
+import normalizePost from "../helpers/normalizations/normalizePost";
 import {
-  CardFromClientType,
-  CardMapToModelType,
+  PostFromClientType,
+  PostMapToModelType,
 } from "../models/types/postTypes";
-import normalizeEditCard from "../helpers/normalizations/normalizeEditPost";
+import normalizeEditPost from "../helpers/normalizations/normalizeEditPost";
 
-type CardsType = null | CardInterface[];
-type CardType = null | CardInterface;
+type PostsType = null | PostInterface[];
+type PostType = null | PostInterface;
 type ErrorType = null | string;
 
-const useCards = () => {
+const usePosts = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
-  const [cards, setCards] = useState<CardsType>(null);
-  const [card, setCard] = useState<CardType>(null);
+  const [posts, setPosts] = useState<PostsType>(null);
+  const [post, setPost] = useState<PostType>(null);
 
   useAxios();
 
@@ -39,66 +38,66 @@ const useCards = () => {
   const requestStatus = (
     loading: boolean,
     errorMessage: ErrorType,
-    cards: CardsType,
-    card: CardType = null
+    posts: PostsType,
+    post: PostType = null
   ) => {
     setLoading(loading);
     setError(errorMessage);
-    setCards(cards);
-    setCard(card);
+    setPosts(posts);
+    setPost(post);
   };
 
-  const handleGetCards = useCallback(async () => {
+  const handleGetPosts = useCallback(async () => {
     try {
       setLoading(true);
-      const cards = await getCards();
-      requestStatus(false, null, cards);
+      const posts = await getPosts();
+      requestStatus(false, null, posts);
     } catch (error) {
       if (typeof error === "string") return requestStatus(false, error, null);
     }
   }, []);
 
-  const handleGetMyCards = useCallback(async () => {
+  const handleGetMyPosts = useCallback(async () => {
     try {
       setLoading(true);
-      const cards = await getMyCards();
-      requestStatus(false, null, cards);
+      const posts = await getMyPosts();
+      requestStatus(false, null, posts);
     } catch (error) {
       if (typeof error === "string") return requestStatus(false, error, null);
     }
   }, []);
 
-  const handleGetCard = async (cardId: string) => {
+  const handleGetPost = async (postId: string) => {
     try {
       setLoading(true);
-      const card = await getCard(cardId);
-      requestStatus(false, null, null, card);
-      return card;
+      const post = await getPost(postId);
+      requestStatus(false, null, null, post);
+      return post;
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null);
     }
   };
 
-  const handleGetFavCard = async (userId: string) => {
+  const handleGetFavPost = async (userId: string) => {
     try {
       setLoading(true);
-      const cards = await getFavCards(userId);
+      const posts = await getFavPosts(userId);
 
-      requestStatus(false, null, cards);
+      requestStatus(false, null, posts);
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null);
     }
   };
 
-  const handleCreateCard = useCallback(
-    async (cardFromClient: CardFromClientType) => {
+  const handleCreatePost = useCallback(
+    async (postFromClient: PostFromClientType) => {
       try {
         setLoading(true);
-        const normalizedCard = normalizeCard(cardFromClient);
-        const card = await createCard(normalizedCard);
-        requestStatus(false, null, null, card);
-        snack("success", "A new business card has been created");
-        navigate(ROUTES.MY_CARDS);
+        const normalizedPost = normalizePost(postFromClient);
+        const post = await createPost(normalizedPost);
+        requestStatus(false, null, null, post);
+        snack("success", "A new business post has been created");
+        navigate("/home");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);
       }
@@ -106,25 +105,25 @@ const useCards = () => {
     []
   );
 
-  const handleDeleteCard = useCallback(async (cardId: string) => {
+  const handleDeletePost = useCallback(async (postId: string) => {
     try {
       setLoading(true);
-      await deleteCard(cardId);
-      snack("success", "The business card has been successfully deleted");
+      await deletePost(postId);
+      snack("success", "The business post has been successfully deleted");
     } catch (error) {
       if (typeof error === "string") return requestStatus(false, error, null);
     }
   }, []);
 
-  const handleUpdateCard = useCallback(
-    async (cardFromClient: CardMapToModelType) => {
+  const handleUpdatePost = useCallback(
+    async (postFromClient: PostMapToModelType) => {
       try {
         setLoading(true);
-        const normalizedCard = normalizeEditCard(cardFromClient);
-        const cardFomServer = await editCard(normalizedCard);
-        requestStatus(false, null, null, cardFomServer);
-        snack("success", "The business card has been successfully updated");
-        navigate(ROUTES.MY_CARDS);
+        const normalizedPost = normalizeEditPost(postFromClient);
+        const postFomServer = await editPost(normalizedPost);
+        requestStatus(false, null, null, postFomServer);
+        snack("success", "The business post has been successfully updated");
+        navigate("/home");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);
       }
@@ -133,19 +132,19 @@ const useCards = () => {
   );
 
   const value = useMemo(() => {
-    return { isLoading, cards, card, error, setCards };
-  }, [isLoading, cards, card, error]);
+    return { isLoading, posts, post, error, setPosts };
+  }, [isLoading, posts, post, error]);
 
   return {
     value,
-    handleGetCards,
-    handleGetMyCards,
-    handleGetCard,
-    handleCreateCard,
-    handleDeleteCard,
-    handleUpdateCard,
-    handleGetFavCard,
+    handleGetPosts,
+    handleGetMyPosts,
+    handleGetPost,
+    handleCreatePost,
+    handleDeletePost,
+    handleUpdatePost,
+    handleGetFavPost,
   };
 };
 
-export default useCards;
+export default usePosts;

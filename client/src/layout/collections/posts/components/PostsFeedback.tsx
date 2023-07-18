@@ -3,8 +3,8 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Cards from "./Posts";
 import CardInterface from "../models/interfaces/PostInterface";
-import Spinner from "../../components/Spinner";
-import Error from "../../components/Error";
+import Spinner from "../../../../extras/components/Spinner";
+import Error from "../../../../extras/components/Error";
 
 type CardsFeedbackProps = {
   isLoading: boolean;

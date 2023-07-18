@@ -1,29 +1,15 @@
-import { CardMapToModelType } from "../../models/types/postTypes";
+import { PostMapToModelType } from "../../models/types/postTypes";
 
-const normalizeEditCard = (card: CardMapToModelType) => {
+const normalizeEditPost = (post: PostMapToModelType) => {
   return {
-    _id: card._id,
-    title: card.title,
-    subtitle: card.subtitle,
-    description: card.description,
-    phone: card.phone,
-    email: card.email,
-    web: card.webUrl,
+    _id: post._id,
+    content: post.content,
     image: {
-      url: card.imageUrl,
-      alt: card.imageAlt,
+      url: post.url,
+      alt: post.alt,
     },
-    address: {
-      state: card.state,
-      country: card.country,
-      city: card.city,
-      street: card.street,
-      houseNumber: +card.houseNumber,
-      zip: +card.zip,
-    },
-    bizNumber: card.bizNumber,
-    user_id: card.user_id,
+    author: post.author,
   };
 };
 
-export default normalizeEditCard;
+export default normalizeEditPost;

@@ -1,20 +1,14 @@
-import AddressInterface from "./AddressInterface";
+import Comment from "./Comment";
 import ImageInterface from "./ImageInterface";
 
-interface CardInterface {
+interface PostInterface {
   _id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  address: AddressInterface;
+  content: string;
   image: ImageInterface;
-  bizNumber: number;
-  phone: string;
-  email: string;
-  user_id: string;
+  author: string;
   createdAt: Date;
   likes: string[];
-  web?: string;
+  comments: Comment[];
 }
 
-export default CardInterface;
+export default PostInterface;

@@ -12,7 +12,7 @@ type Props = {
   onChangeDialog: (term?: string) => void;
 };
 
-const CardDeleteDialog: FC<Props> = ({
+const PostDeleteDialog: FC<Props> = ({
   isDialogOpen,
   onDelete,
   onChangeDialog,
@@ -23,15 +23,16 @@ const CardDeleteDialog: FC<Props> = ({
       onClose={() => onChangeDialog()}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
-      maxWidth="xs">
+      maxWidth="xs"
+    >
       <DialogTitle id="alert-dialog-title">
-        {"Are you sure you want to delete this card?"}
+        {"Are you sure you want to delete this post?"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          This operation will completely delete the business card and all its
+          This operation will completely delete the business post and all its
           data from the database and it will not be possible to retrieve the
-          card afterwards
+          post afterwards
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -39,11 +40,11 @@ const CardDeleteDialog: FC<Props> = ({
           cancel
         </Button>
         <Button onClick={onDelete} autoFocus color="info">
-          Delete card
+          Delete post
         </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default CardDeleteDialog;
+export default PostDeleteDialog;

@@ -27,6 +27,7 @@ export const normalizeUser = (user: UserMapToModelType) => {
     },
   };
 };
+
 export const normalizedEditUser = (user: UserMapToModelEditType) => {
   return {
     _id: user._id,

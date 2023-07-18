@@ -1,23 +1,28 @@
 import React, { FC, ChangeEvent } from "react";
-import Form from "../../forms/components/Form";
-import Input from "../../forms/components/Input";
+import Form from "../../../../extras/forms/components/Form";
+import Input from "../../../../extras/forms/components/Input";
 import Joi from "joi";
 import {
-  CardFromClientType,
-  CreateCardErrors,
+  PostFromClientType,
+  CreatePostErrors,
 } from "../models/types/postTypes";
+// import AppBar from '@mui/material/AppBar'
+// import Toolbar from '@mui/material/Toolbar'
+// import IconButton from '@mui/material/IconButton'
+// import Typography from '@mui/material/Typography'
+// import Menu from '@mui/icons-material/Menu'
 
 type Props = {
   title?: string;
   onSubmit: () => void;
   onReset: () => void;
   onFormChange: () => Joi.ValidationError | null;
-  errors: CreateCardErrors;
-  data: CardFromClientType;
+  errors: CreatePostErrors;
+  data: PostFromClientType;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const CardForm: FC<Props> = ({
+const PostForm: FC<Props> = ({
   onSubmit,
   onReset,
   onFormChange,
@@ -38,119 +43,24 @@ const CardForm: FC<Props> = ({
       <Input
         name="title"
         label="title"
-        error={errors.title}
+        error={errors.content}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
       />
       <Input
-        name="subtitle"
-        label="subtitle"
-        error={errors.subtitle}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="description"
-        label="description"
-        error={errors.description}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="phone"
-        label="phone"
-        type="phone"
-        error={errors.phone}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="email"
-        label="email"
-        type="email"
-        error={errors.email}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="webUrl"
-        label="web"
-        error={errors.webUrl}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-      />
-      <Input
-        name="imageUrl"
+        name="url"
         label="image url"
-        error={errors.imageUrl}
+        error={errors.url}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
         required={false}
       />
       <Input
-        name="imageAlt"
+        name="alt"
         label="image alt"
-        error={errors.imageAlt}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-      />
-      <Input
-        name="state"
-        label="state"
-        error={errors.state}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-      />
-      <Input
-        name="country"
-        label="country"
-        error={errors.country}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="city"
-        label="city"
-        error={errors.city}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="street"
-        label="street"
-        error={errors.street}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="houseNumber"
-        label="houseNumber"
-        type="number"
-        error={errors.houseNumber}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-      />
-      <Input
-        name="zip"
-        label="zip"
-        type="number"
-        error={errors.zip}
+        error={errors.alt}
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
@@ -160,4 +70,4 @@ const CardForm: FC<Props> = ({
   );
 };
 
-export default React.memo(CardForm);
+export default React.memo(PostForm);
