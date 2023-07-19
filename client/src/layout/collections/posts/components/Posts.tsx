@@ -1,24 +1,24 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import Card from "./post/Post";
-import CardInterface from "../models/interfaces/PostInterface";
+import Post from "./post/Post";
+import PostInterface from "../models/interfaces/PostInterface";
 
-type CardsProps = {
-  cards: CardInterface[];
+type PostsProps = {
+  posts: PostInterface[];
   onDelete: (id: string) => void;
   onLike: () => void;
 };
 
-const Cards: React.FC<CardsProps> = ({ cards, onDelete, onLike }) => {
+const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike }) => {
   return (
     <Grid container spacing={2} pb={2}>
-      {cards.map((card) => (
-        <Grid item key={card._id} xs={12} sm={6} md={4} lg={3}>
-          <Card card={card} onDelete={onDelete} onLike={onLike} />
+      {posts.map((post) => (
+        <Grid item key={post._id} xs={12} sm={6} md={4} lg={3}>
+          <Post post={post} onDelete={onDelete} onLike={onLike} />
         </Grid>
       ))}
     </Grid>
   );
 };
 
-export default Cards;
+export default Posts;

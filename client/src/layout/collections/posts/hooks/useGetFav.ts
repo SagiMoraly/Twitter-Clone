@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
-import useCards from "./usePosts";
+import usePosts from "./usePosts";
 
 const useGetFav = () => {
-  const { value, handleGetCards } = useCards();
-  const { cards } = value;
+  const { value, handleGetPosts } = usePosts();
+  const { posts } = value;
 
   const [searchUser, setSearchUser] = useState(""); // State variable for search query
-  const [filteredFavCards, setFilteredFavCards] = useState(cards); // State variable for filtered cards
+  const [filteredFavPosts, setFilteredFavPosts] = useState(posts); // State variable for filtered Posts
 
   useEffect(() => {
-    handleGetCards();
+    handleGetPosts();
   }, []);
 
   useEffect(() => {
-    const filterCards = () => {
-      if (cards === undefined) {
-        setFilteredFavCards(null);
+    const filterPosts = () => {
+      if (posts === undefined) {
+        setFilteredFavPosts(null);
       } else if (searchUser) {
-        setFilteredFavCards(cards);
+        setFilteredFavPosts(posts);
       } else {
-        const filtered = cards?.filter(
-          (card) => card.title && card.likes.includes(searchUser)
+        const filtered = posts?.filter((post) =>
+          post.likes.includes(searchUser)
         );
-        setFilteredFavCards(filtered || null);
+        setFilteredFavPosts(filtered || null);
       }
     };
 
-    filterCards();
-  }, [cards, searchUser]);
+    filterPosts();
+  }, [posts, searchUser]);
 
   const getUserId = (userId: string) => {
     setSearchUser(userId);
@@ -37,8 +37,8 @@ const useGetFav = () => {
     getUserId,
     searchUser,
     setSearchUser,
-    filteredFavCards,
-    setFilteredFavCards,
+    filteredFavPosts,
+    setFilteredFavPosts,
   };
 };
 

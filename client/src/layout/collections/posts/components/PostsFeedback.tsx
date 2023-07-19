@@ -1,38 +1,38 @@
 import React from "react";
 
 import Typography from "@mui/material/Typography";
-import Cards from "./Posts";
-import CardInterface from "../models/interfaces/PostInterface";
+import Posts from "./Posts";
+import PostInterface from "../models/interfaces/PostInterface";
 import Spinner from "../../../../extras/components/Spinner";
 import Error from "../../../../extras/components/Error";
 
-type CardsFeedbackProps = {
+type PostsFeedbackProps = {
   isLoading: boolean;
   error: string | null;
-  cards: CardInterface[] | null;
+  posts: PostInterface[] | null;
   onDelete?: (id: string) => void;
   onLike?: () => void;
 };
 
-const CardsFeedback: React.FC<CardsFeedbackProps> = ({
+const PostsFeedback: React.FC<PostsFeedbackProps> = ({
   isLoading,
   error,
-  cards,
+  posts,
   onLike = () => {},
-  onDelete = (cardId) => console.log("you deleted card: " + cardId),
+  onDelete = (postId) => console.log("you deleted post: " + postId),
 }) => {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (cards && !cards.length)
+  if (posts && !posts.length)
     return (
       <Typography variant="body1" color="initial">
-        Oops, there are no business cards in the database that match the
+        Oops, there are no business posts in the database that match the
         parameters you entered!
       </Typography>
     );
-  if (cards && cards.length)
-    return <Cards cards={cards} onLike={onLike} onDelete={onDelete} />;
+  if (posts && posts.length)
+    return <Posts posts={posts} onLike={onLike} onDelete={onDelete} />;
   return null;
 };
 
-export default CardsFeedback;
+export default PostsFeedback;
