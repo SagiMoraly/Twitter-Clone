@@ -8,18 +8,21 @@ const User = require("../models/mongoose/User");
 
 const register = async (req, res) => {
   try {
-    console.log(1);
     const user = req.body;
     const { email } = user;
-
     const { error } = registerValidation(user);
     if (error)
-      return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
+      return handleError(
+        res,
+        400,
+        `Joi register Error: ${error.details[0].message}`
+      );
 
     const isUserExistInDB = await User.findOne({ email });
     if (isUserExistInDB) throw new Error("User already registered");
-
+    console.log(user);
     const normalizedUser = normalizeUser(user);
+    console.log("hehe");
     const userForBD = new User(normalizedUser);
     const userFromDB = await userForBD.save();
     res.send(userFromDB);

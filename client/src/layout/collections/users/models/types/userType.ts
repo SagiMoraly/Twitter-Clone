@@ -1,14 +1,14 @@
 export type UserNameType = { first: string; middle?: string; last: string };
 
 export type ProfilePicture = { url?: string; alt?: string };
-export type BackGrounProfilePicture = { BGurl?: string; BGalt?: string };
+export type backGroundProfilePicture = { BGurl?: string; BGalt?: string };
 
 export type Profile = {
   name: UserNameType;
   bio: string;
   location: string;
   profilePicture: ProfilePicture;
-  backGrounProfilePicture: BackGrounProfilePicture;
+  backGroundProfilePicture: backGroundProfilePicture;
 };
 
 type UserType = {
@@ -97,7 +97,7 @@ export type NormalizedEditUser = {
       url: string;
       alt: string;
     };
-    BackGrounProfilePicture: {
+    backGroundProfilePicture: {
       BGurl: string;
       BGalt: string;
     };

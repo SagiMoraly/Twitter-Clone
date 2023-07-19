@@ -11,10 +11,11 @@ const normalizeUser = (rawUser) => {
 
   const backGroundProfilePicture = {
     ...rawUser.profile.backGroundProfilePicture,
-    url:
-      rawUser.profile.backGroundProfilePicture.url ||
+    BGurl:
+      rawUser.profile.backGroundProfilePicture.BGurl ||
       "https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=png",
-    alt: rawUser.profile.backGroundProfilePicture.alt || "User profile image",
+    BGalt:
+      rawUser.profile.backGroundProfilePicture.BGalt || "User profile image",
   };
 
   const profile = {
@@ -30,6 +31,7 @@ const normalizeUser = (rawUser) => {
     profile,
     password: generateUserPassword(rawUser.password),
   };
+  console.log(user);
   return user;
 };
 

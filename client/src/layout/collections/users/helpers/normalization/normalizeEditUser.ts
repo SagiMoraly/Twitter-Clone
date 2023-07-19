@@ -17,7 +17,7 @@ const normalizeEditUser = (user: UserMapToModelEditType) => {
         url: user.url,
         alt: user.alt,
       },
-      backGrounProfilePicture: {
+      backGroundProfilePicture: {
         BGurl: user.BGurl,
         BGalt: user.BGalt,
       },

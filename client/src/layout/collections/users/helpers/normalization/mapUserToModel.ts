@@ -14,8 +14,8 @@ const mapUserToModel = (user: UserInterface): UserMapToModelType => {
     location: user.profile.location,
     url: user.profile.ProfilePicture.url,
     alt: user.profile.ProfilePicture.alt,
-    BGurl: user.profile.BackGrounProfilePicture.BGurl,
-    BGalt: user.profile.BackGrounProfilePicture.BGalt,
+    BGurl: user.profile.backGroundProfilePicture.BGurl,
+    BGalt: user.profile.backGroundProfilePicture.BGalt,
   };
 };
 

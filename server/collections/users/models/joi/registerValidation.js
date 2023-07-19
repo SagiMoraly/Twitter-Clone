@@ -19,13 +19,23 @@ const IMAGE = Joi.object()
   })
   .required();
 
+const BGIMAGE = Joi.object().keys({
+  BGurl: Joi.string()
+    .ruleset.regex(
+      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+    )
+    .rule({ message: "user image mast be a valid url" })
+    .allow(""),
+  BGalt: Joi.string().min(2).max(256).allow(""),
+});
+
 const PROFILE = Joi.object()
   .keys({
     name: NAME,
     bio: Joi.string().min(2).max(256).allow(""),
     location: Joi.string().min(2).max(256).allow(""),
     profilePicture: IMAGE,
-    backGroundProfilePicture: IMAGE,
+    backGroundProfilePicture: BGIMAGE,
   })
   .required();
 

@@ -27,6 +27,11 @@ const Image = new mongoose.Schema({
   alt: DEFAULT_VALIDATION,
 });
 
+const BGImage = new mongoose.Schema({
+  BGurl: URL_VALIDATION,
+  BGalt: DEFAULT_VALIDATION,
+});
+
 const Profile = new mongoose.Schema({
   name: Name,
   bio: {
@@ -41,7 +46,7 @@ const Profile = new mongoose.Schema({
     default: "",
   },
   profilePicture: Image,
-  backGroundProfilePicture: Image,
+  backGroundProfilePicture: BGImage,
 });
 
 const schema = new mongoose.Schema({
