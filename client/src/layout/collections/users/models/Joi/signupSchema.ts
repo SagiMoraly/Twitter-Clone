@@ -24,6 +24,13 @@ const signupSchema = {
     .rule({ message: "user image must be a valid url" })
     .allow(""),
   alt: Joi.string().min(2).max(256).allow(""),
+  BGurl: Joi.string()
+    .ruleset.regex(
+      /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+    )
+    .rule({ message: "user image must be a valid url" })
+    .allow(""),
+  BGalt: Joi.string().min(2).max(256).allow(""),
   bio: Joi.string().min(2).max(256).allow(""),
   location: Joi.string().min(2).max(256).allow(""),
   isAdmin: Joi.boolean().allow(""),

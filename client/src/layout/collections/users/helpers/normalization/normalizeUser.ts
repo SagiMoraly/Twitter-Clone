@@ -21,8 +21,8 @@ export const normalizeUser = (user: UserMapToModelType) => {
         alt: user.alt,
       },
       backGrounProfilePicture: {
-        url: user.url,
-        alt: user.alt,
+        BGurl: user.BGurl,
+        BGalt: user.BGalt,
       },
     },
   };
@@ -46,8 +46,8 @@ export const normalizedEditUser = (user: UserMapToModelEditType) => {
         alt: user.alt,
       },
       backGrounProfilePicture: {
-        url: user.url,
-        alt: user.alt,
+        BGurl: user.BGurl,
+        BGalt: user.BGalt,
       },
     },
   };

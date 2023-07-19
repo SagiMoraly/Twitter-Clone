@@ -1,5 +1,5 @@
 import { useCallback, useState, useMemo } from "react";
-import { normalizeEditUser } from "../helpers/normalization/normalizeUser";
+import { normalizedEditUser } from "../helpers/normalization/normalizeUser";
 import RegistrationForm, {
   UserMapToModelEditType,
 } from "../models/types/userType";
@@ -8,12 +8,16 @@ import { getUser } from "../service/userApi";
 import {
   UserMapToModelType,
   NormalizedEditUser,
-} from "../../cards/models/types/userTypes";
+} from "../../users/models/types/userType";
 import { useNavigate } from "react-router-dom";
-import { useSnack } from "../../providers/SnackbarProvider";
-import ROUTES from "../../routes/routesModel";
+import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 
-export type userType = null | RegistrationForm | undefined | string;
+export type userType =
+  | null
+  | RegistrationForm
+  | undefined
+  | string
+  | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
 
 const useUsertwo = () => {
@@ -49,7 +53,7 @@ const useUsertwo = () => {
     async (userFromClient: UserMapToModelEditType) => {
       try {
         setLoading(true);
-        const normalizedUser = normalizeEditUser(userFromClient);
+        const normalizedUser = normalizedEditUser(userFromClient);
         const userFomServer = await editUser(normalizedUser);
         requestStatus(false, null, userFomServer);
         snack("success", "The user has been successfully updated");

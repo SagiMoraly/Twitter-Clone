@@ -1,7 +1,7 @@
 export type UserNameType = { first: string; middle?: string; last: string };
 
 export type ProfilePicture = { url?: string; alt?: string };
-export type BackGrounProfilePicture = { url?: string; alt?: string };
+export type BackGrounProfilePicture = { BGurl?: string; BGalt?: string };
 
 export type Profile = {
   name: UserNameType;
@@ -36,6 +36,8 @@ export type RegistrationForm = {
   location: string;
   url: string;
   alt: string;
+  BGurl: string;
+  BGalt: string;
 };
 
 export type UserMapToModelType = {
@@ -48,6 +50,8 @@ export type UserMapToModelType = {
   location: string;
   url: string;
   alt: string;
+  BGurl: string;
+  BGalt: string;
 };
 
 export type UserMapToModelEditType = {
@@ -61,6 +65,8 @@ export type UserMapToModelEditType = {
   location: string;
   url: string;
   alt: string;
+  BGurl: string;
+  BGalt: string;
 };
 
 export type RegistrationFormErrors = Partial<RegistrationForm>;
@@ -92,8 +98,8 @@ export type NormalizedEditUser = {
       alt: string;
     };
     BackGrounProfilePicture: {
-      url: string;
-      alt: string;
+      BGurl: string;
+      BGalt: string;
     };
   };
 };
@@ -108,6 +114,8 @@ export type UserFromClientType = {
   location: string;
   url: string;
   alt: string;
+  BGurl: string;
+  BGalt: string;
 };
 
 export default UserType;

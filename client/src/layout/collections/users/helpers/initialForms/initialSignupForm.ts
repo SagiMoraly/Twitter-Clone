@@ -8,6 +8,8 @@ const initialSignupForm = {
   location: "",
   url: "",
   alt: "",
+  BGurl: "",
+  BGalt: "",
   // followers: "",
   // following: "",
   // isAdmin: false,

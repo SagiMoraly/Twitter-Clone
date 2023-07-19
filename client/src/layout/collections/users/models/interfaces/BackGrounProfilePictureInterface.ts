@@ -1,6 +1,6 @@
 interface BackGrounProfilePicture {
-  url: string;
-  alt: string;
+  BGurl: string;
+  BGalt: string;
 }
 
 export default BackGrounProfilePicture;

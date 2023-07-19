@@ -1,36 +1,32 @@
 import React, { useEffect } from "react";
 import Container from "@mui/material/Container";
-import PageHeader from "./../../components/PageHeader";
+// import PageHeader from "./../../components/PageHeader";
 import { useParams } from "react-router-dom";
-import Card from "../components/card/Card";
-import useCards from "../hooks/useCards";
-import Spinner from "../../components/Spinner";
-import Error from "../../components/Error";
+import Post from "../collections/posts/components/post/Post";
+import usePosts from "../collections/posts/hooks/usePosts";
+import Spinner from "../../extras/components/Spinner";
+import Error from "../../extras/components/Error";
 
-const CardDetailsPage = () => {
-  const { cardId } = useParams();
-  const { value, handleGetCard } = useCards();
-  const { card, error, isLoading } = value;
+const PostDetailsPage = () => {
+  const { postId } = useParams();
+  const { value, handleGetPost } = usePosts();
+  const { post, error, isLoading } = value;
 
   useEffect(() => {
-    if (cardId) handleGetCard(cardId);
+    if (postId) handleGetPost(postId);
   }, []);
 
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (!isLoading && !card) return <p>No card to display...</p>;
+  if (!isLoading && !post) return <p>No post to display...</p>;
 
-  if (!isLoading && card)
+  if (!isLoading && post)
     return (
       <Container>
-        <PageHeader
-          title="Business Details"
-          subtitle="Here you can see details of the business"
-        />
         <div>
-          <Card
-            card={card}
-            onDelete={(id) => console.log("you deleted card: " + id)}
+          <Post
+            post={post}
+            onDelete={(id) => console.log("you deleted post: " + id)}
             onLike={() => {}}
           />
         </div>
@@ -39,4 +35,4 @@ const CardDetailsPage = () => {
   return null;
 };
 
-export default CardDetailsPage;
+export default PostDetailsPage;

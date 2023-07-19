@@ -118,6 +118,24 @@ const UserForm: FC<Props> = ({
         breakPoints={{ sm: 6 }}
         required={false}
       />
+      <Input
+        name="BGurl"
+        label="image url"
+        error={errors.BGurl}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+        required={false}
+      />
+      <Input
+        name="BGalt"
+        label="image alt"
+        error={errors.BGalt}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+        required={false}
+      />
       <FormLink text="Already registered?" to={"login"} />
     </Form>
   );
