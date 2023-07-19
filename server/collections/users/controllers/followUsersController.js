@@ -12,8 +12,7 @@ const followUser = async (req, res) => {
 
     let followingUser = await User.findById(followingUserId);
     let followedUser = await User.findById(followedUserId);
-    console.log(followingUserId);
-    console.log(req.params);
+
     if (!followingUser)
       throw new Error(
         "A followingUser with this ID cannot be found in the database"

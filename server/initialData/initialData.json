@@ -32,8 +32,8 @@
           "alt": ""
         },
         "backGroundProfilePicture": {
-          "url": "",
-          "alt": ""
+          "BGurl": "",
+          "BGalt": ""
         }
       }
     },
@@ -53,8 +53,8 @@
           "alt": ""
         },
         "backGroundProfilePicture": {
-          "url": "",
-          "alt": ""
+          "BGurl": "",
+          "BGalt": ""
         }
       },
       "isAdmin": true

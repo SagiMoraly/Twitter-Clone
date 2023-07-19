@@ -4,6 +4,15 @@ import { NormalizedEditPost } from "../models/types/postTypes";
 
 const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8181";
 
+export const createPost = async (normalizedPost: object) => {
+  try {
+    const { data } = await axios.post(`${apiUrl}/posts`, normalizedPost);
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+  }
+};
+
 export const getPosts = async () => {
   try {
     const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts`);
@@ -50,15 +59,6 @@ export const getPost = async (postId: string) => {
   } catch (error) {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);
     return Promise.reject("An unexpected error occurred!");
-  }
-};
-
-export const createPost = async (normalizedPost: object) => {
-  try {
-    const { data } = await axios.post(`${apiUrl}/posts`, normalizedPost);
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) return Promise.reject(error.message);
   }
 };
 
@@ -120,3 +120,36 @@ export const removeFavPost = async (postId: string, userId: string) => {
     return false;
   }
 };
+
+export const getFeed = async () => {
+  try {
+    const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts/feed`);
+
+    return Promise.resolve(data);
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+    console.error(error);
+    return Promise.reject("An unexpected error occurred!");
+  }
+};
+
+//note
+// check if the adress is correct
+
+// tested and exist
+
+// exist not tested
+// router.post("/", auth, createPost);
+// router.get("/", getPosts);
+// router.get("/:postId", getPost);
+// router.put("/:postId", auth, updatePost);
+// router.delete("/:postId", auth, deletePost);
+// router.get("/feed", auth, getFeed);
+
+//need fix
+// router.get("/postsUser/:userId", getUserPosts);
+// router.patch("/:postId", auth, likePost); // need a rename and combined
+
+// dont have yet
+// router.post("/:postId", auth, createComment);
+// router.delete("/:postId/:commentId", auth, deleteComment);

@@ -20,7 +20,7 @@ const LoginPage = () => {
     handleLogin
   );
 
-  if (user) return <Navigate replace to={"/"} />;
+  if (user) return <Navigate replace to={"/home"} />;
 
   return (
     <Container

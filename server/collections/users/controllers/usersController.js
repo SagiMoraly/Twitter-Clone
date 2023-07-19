@@ -20,9 +20,7 @@ const register = async (req, res) => {
 
     const isUserExistInDB = await User.findOne({ email });
     if (isUserExistInDB) throw new Error("User already registered");
-    console.log(user);
     const normalizedUser = normalizeUser(user);
-    console.log("hehe");
     const userForBD = new User(normalizedUser);
     const userFromDB = await userForBD.save();
     res.send(userFromDB);
