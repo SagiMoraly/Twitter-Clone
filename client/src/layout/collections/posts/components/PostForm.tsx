@@ -1,11 +1,12 @@
 import React, { FC, ChangeEvent } from "react";
-import Form from "../../../../extras/forms/components/Form";
+import FormTweet from "../../../../extras/forms/components/FormTweet";
 import Input from "../../../../extras/forms/components/Input";
 import Joi from "joi";
 import {
   PostFromClientType,
   CreatePostErrors,
 } from "../models/types/postTypes";
+import TextField from "@mui/material/TextField";
 // import AppBar from '@mui/material/AppBar'
 // import Toolbar from '@mui/material/Toolbar'
 // import IconButton from '@mui/material/IconButton'
@@ -32,7 +33,7 @@ const PostForm: FC<Props> = ({
   onInputChange,
 }) => {
   return (
-    <Form
+    <FormTweet
       onSubmit={onSubmit}
       onReset={onReset}
       onFormChange={onFormChange}
@@ -41,12 +42,15 @@ const PostForm: FC<Props> = ({
       spacing={1}
     >
       <Input
-        name="title"
-        label="title"
+        name="content"
+        label="tweet out!!!"
         error={errors.content}
         onInputChange={onInputChange}
         data={data}
-        breakPoints={{ sm: 6 }}
+        variant="filled"
+        breakPoints={{ sm: 12 }}
+        multiline={true}
+        height={130}
       />
       <Input
         name="url"
@@ -56,6 +60,7 @@ const PostForm: FC<Props> = ({
         data={data}
         breakPoints={{ sm: 6 }}
         required={false}
+        variant="filled"
       />
       <Input
         name="alt"
@@ -65,8 +70,9 @@ const PostForm: FC<Props> = ({
         data={data}
         breakPoints={{ sm: 6 }}
         required={false}
+        variant="filled"
       />
-    </Form>
+    </FormTweet>
   );
 };
 

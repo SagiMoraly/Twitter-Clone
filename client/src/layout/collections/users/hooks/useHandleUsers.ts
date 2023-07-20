@@ -41,7 +41,7 @@ const useHandleUsers = () => {
         setToken(token);
         const userFromLocalStorage = getUser();
         requestStatus(false, null, userFromLocalStorage);
-        navigate("/");
+        navigate("/home");
       } catch (error) {
         if (typeof error === "string") requestStatus(false, error, null);
       }

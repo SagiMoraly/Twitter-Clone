@@ -15,6 +15,8 @@ type Props = {
   label: string;
   required?: boolean;
   error?: string;
+  multiline?: boolean;
+  height?: number;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   breakPoints?: Partial<Record<BreakPointsKeysType, BreakPointValueType>>;
 };
@@ -29,6 +31,8 @@ const Input: FC<Props> = ({
   error,
   onInputChange,
   breakPoints,
+  multiline = false,
+  height,
 }) => {
   return (
     <Grid item xs={12} {...breakPoints}>
@@ -45,6 +49,8 @@ const Input: FC<Props> = ({
         onChange={onInputChange}
         fullWidth
         autoComplete="off"
+        multiline={multiline}
+        inputProps={{ style: { height: height ? `${height}px` : undefined } }}
       />
     </Grid>
   );

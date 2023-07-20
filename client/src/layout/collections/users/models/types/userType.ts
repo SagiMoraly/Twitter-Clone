@@ -22,7 +22,7 @@ export type UserTypeEdit = UserType & {
   _id: string;
 };
 
-export type TokenType = { _id: string; isAdmin: boolean };
+export type TokenType = { _id: string; isAdmin: boolean; userName: string };
 
 export type Login = Pick<UserType, "email" | "password">;
 

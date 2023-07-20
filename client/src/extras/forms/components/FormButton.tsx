@@ -16,6 +16,9 @@ type Props = {
   onClick: () => void;
   disabled?: boolean;
   node: ReactNode;
+  borderRadius?: string; // Optional prop for controlling the borderRadius
+  padding?: string; // Optional prop for controlling the borderRadius
+  fontWeight?: string; // Optional prop for controlling the borderRadius
 };
 
 const FormButton: FC<Props> = ({
@@ -26,6 +29,9 @@ const FormButton: FC<Props> = ({
   onClick,
   disabled = false,
   node,
+  borderRadius, // No default value specified
+  padding,
+  fontWeight,
 }) => {
   return (
     <Button
@@ -35,7 +41,13 @@ const FormButton: FC<Props> = ({
       color={color}
       onClick={onClick}
       disabled={disabled}
-      fullWidth>
+      fullWidth
+      sx={{
+        borderRadius: borderRadius ? borderRadius : undefined,
+        padding: padding ? padding : undefined,
+        fontWeight: fontWeight ? fontWeight : undefined,
+      }}
+    >
       {node}
     </Button>
   );
