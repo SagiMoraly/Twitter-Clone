@@ -85,42 +85,6 @@ export const editPost = async (normalizedPost: NormalizedEditPost) => {
   }
 };
 
-export const addFavPost = async (postId: string, userId: string) => {
-  try {
-    const response: AxiosResponse<PostInterface> = await axios.patch(
-      `${apiUrl}/posts/${postId}`,
-      {
-        $push: { likes: userId },
-      }
-    );
-
-    // console.log(response.data);
-    // Optional: Handle the response as needed
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-};
-
-export const removeFavPost = async (postId: string, userId: string) => {
-  try {
-    const response: AxiosResponse<PostInterface> = await axios.patch(
-      `${apiUrl}/posts/${postId}`,
-      {
-        $pull: { likes: userId },
-      }
-    );
-
-    // console.log(response.data);
-    // Optional: Handle the response as needed
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-};
-
 export const getFeed = async () => {
   try {
     const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts/feed`);
@@ -130,6 +94,36 @@ export const getFeed = async () => {
     if (axios.isAxiosError(error)) return Promise.reject(error.message);
     console.error(error);
     return Promise.reject("An unexpected error occurred!");
+  }
+};
+
+export const getUserPosts = async (userId: string) => {
+  try {
+    const { data } = await axios.get<PostInterface[]>(
+      `${apiUrl}/postsUser/${userId}`
+    );
+
+    return Promise.resolve(data);
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+    console.error(error);
+    return Promise.reject("An unexpected error occurred!");
+  }
+};
+
+export const likePost = async (postId: string) => {
+  try {
+    const response: AxiosResponse<PostInterface> = await axios.patch(
+      `${apiUrl}/posts/${postId}`
+      // , {$push: { likes: userId },}
+    );
+
+    // console.log(response.data);
+    // Optional: Handle the response as needed
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
   }
 };
 
@@ -145,10 +139,10 @@ export const getFeed = async () => {
 // router.put("/:postId", auth, updatePost);
 // router.delete("/:postId", auth, deletePost);
 // router.get("/feed", auth, getFeed);
+// router.get("/postsUser/:userId", getUserPosts);
+// router.patch("/:postId", auth, likePost);
 
 //need fix
-// router.get("/postsUser/:userId", getUserPosts);
-// router.patch("/:postId", auth, likePost); // need a rename and combined
 
 // dont have yet
 // router.post("/:postId", auth, createComment);
