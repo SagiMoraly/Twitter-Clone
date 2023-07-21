@@ -15,17 +15,18 @@ import UserInterface from "../models/interfaces/UserInterface";
 
 export type userType =
   | null
+  | UserInterface
   | RegistrationForm
   | undefined
-  | string
-  | NormalizedEditUser; //idk about this
+  | string;
+// | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
 // type usersType = userType[] | null;
 
-const useUsertwo = () => {
+const useUser = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
-  const [user, setuser] = useState<userType>(null);
+  const [user, setuser] = useState<UserInterface | null>(null);
   const [users, setUsers] = useState<UserInterface[] | null>(null);
 
   const navigate = useNavigate();
@@ -82,10 +83,10 @@ const useUsertwo = () => {
     []
   );
   const userValue = useMemo(() => {
-    return { isLoading, users, error };
-  }, [isLoading, users, error]);
+    return { isLoading, users, user, error };
+  }, [isLoading, users, user, error]);
 
   return { handleGetUser, handleUpdateUser, handleGetUsers, userValue };
 };
 
-export default useUsertwo;
+export default useUser;

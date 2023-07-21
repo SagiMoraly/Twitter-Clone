@@ -81,11 +81,11 @@ const getUser = async (req, res) => {
     const { userId } = req.params;
     let user = req.user;
 
-    if (!user.isAdmin)
-      if (!(user._id === userId))
-        throw new Error(
-          "A user dose not have the ability to use this function"
-        );
+    // if (!user.isAdmin)
+    //   if (!(user._id === userId))
+    //     throw new Error(
+    //       "A user dose not have the ability to use this function"
+    //     );
     user = await User.findById(userId);
 
     if (!user)
