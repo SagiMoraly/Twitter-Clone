@@ -6,7 +6,7 @@ interface PostInterface {
   content: string;
   image: ImageInterface;
   author: string;
-  createdAt: Date;
+  timestamp: Date;
   likes: string[];
   comments: Comment[];
 }

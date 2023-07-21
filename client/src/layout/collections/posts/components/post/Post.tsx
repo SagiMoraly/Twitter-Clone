@@ -22,11 +22,11 @@ const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
   return (
     <MuiCard sx={{ minWidth: 700 }} elevation={4}>
       <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
-        <PostAvatar ProfilePicture={user.profile.profilePicture} />
+        <PostAvatar user={user} time={post.timestamp} />
       </CardActionArea>
       <CardActionArea onClick={() => navigate(`${"/post"}/${post._id}`)}>
         <PostBody post={post} />
-        <PostHead image={post.image} />
+        {post.image.url && <PostHead image={post.image} />}
       </CardActionArea>
 
       <CardActionBar

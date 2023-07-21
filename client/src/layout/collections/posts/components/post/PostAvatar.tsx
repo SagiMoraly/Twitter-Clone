@@ -1,21 +1,35 @@
 import React from "react";
 import CardMedia from "@mui/material/CardMedia";
-import ProfilePictureInterface from "../../../users/models/interfaces/ProfilePictureInterface";
-import Avatar from "@mui/material/Avatar";
+import UserInterface from "../../../users/models/interfaces/UserInterface";
+import { Avatar, Typography, Box } from "@mui/material";
 
 type PostHeadProps = {
-  ProfilePicture: ProfilePictureInterface;
+  user: UserInterface;
+  time: Date;
 };
 
-const PostAvatar = ({ ProfilePicture }: PostHeadProps) => {
-  console.log(ProfilePicture);
-
-  if (ProfilePicture) {
-    const { url, alt } = ProfilePicture;
+const PostAvatar = ({ user, time }: PostHeadProps) => {
+  if (user) {
+    const { profile, userName } = user;
+    const { profilePicture } = profile;
+    const { url, alt } = profilePicture;
+    const timeString = time.toLocaleString();
     return (
-      <Avatar aria-label={alt}>
-        <CardMedia component="img" image={url} alt={alt} />
-      </Avatar>
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Box display="flex" alignItems="center">
+          <Avatar alt={alt} src={url} />
+          <Typography>{`@${userName}`}</Typography>
+        </Box>
+        <Typography style={{ opacity: 0.6, fontWeight: "lighter" }}>
+          {timeString}
+        </Typography>
+        {/* Add any other content related to the post */}
+      </Box>
     );
   }
   return <></>;
