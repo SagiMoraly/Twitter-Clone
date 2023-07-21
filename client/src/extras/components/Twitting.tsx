@@ -3,13 +3,13 @@ import PostForm from "../../layout/collections/posts/components/PostForm";
 import initialCreatePostObject from "../../layout/collections/posts/helpers/initialForms/initialPostObject";
 import usePosts from "../../layout/collections/posts/hooks/usePosts";
 import postSchema from "../../layout/collections/posts/models/Joi/postSchema";
-import { useUser } from "../../layout/collections/users/providers/UserProvider";
+import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 
 export const Twitting = () => {
   const { handleCreatePost } = usePosts();
-  const { user } = useUser();
+  const { user } = useUserLoged();
   const { value, ...rest } = useForm(
     initialCreatePostObject,
     postSchema,

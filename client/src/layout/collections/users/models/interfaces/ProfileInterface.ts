@@ -6,7 +6,7 @@ interface ProfileInterface {
   name: NameInterface;
   bio: string;
   location: string;
-  ProfilePicture: ProfilePictureInterface;
+  profilePicture: ProfilePictureInterface;
   backGroundProfilePicture: BackGroundProfilePictureInterface;
 }
 

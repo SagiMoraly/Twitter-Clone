@@ -6,7 +6,7 @@ import {
   removeToken,
   setTokenInLocalStorage,
 } from "../service/localStorage";
-import { useUser } from "../providers/UserProvider";
+import { useUserLoged } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { Login, RegistrationForm, TokenType } from "../models/types/userType";
 import { normalizeUser } from "../helpers/normalization/normalizeUser";
@@ -17,7 +17,7 @@ const useHandleUsers = () => {
 
   useAxios();
   const navigate = useNavigate();
-  const { user, setUser, setToken } = useUser();
+  const { user, setUser, setToken } = useUserLoged();
 
   const requestStatus = useCallback(
     (

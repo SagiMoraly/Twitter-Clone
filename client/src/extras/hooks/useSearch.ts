@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import usePosts from "../../layout/collections/posts/hooks/usePosts";
 
-import { useUser } from "../../layout/collections/users/providers/UserProvider";
+import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
 
 const useSearch = (whatHandle?: string) => {
   const { value, handleGetFavPost, handleGetPosts, handleGetMyPosts } =
     usePosts();
   const { posts } = value;
 
-  const { user } = useUser();
+  const { user } = useUserLoged();
 
   const [searchQuery, setSearchQuery] = useState(""); // State variable for search query
   const [filteredPosts, setFilteredPosts] = useState(posts); // State variable for filtered cards

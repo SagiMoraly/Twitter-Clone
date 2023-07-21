@@ -64,10 +64,10 @@ const login = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const user = req.user;
-    if (!user.isAdmin)
-      throw new Error(
-        "You must be a admin type user in order to get all business users"
-      );
+    // if (!user.isAdmin)
+    //   throw new Error(
+    //     "You must be a admin type user in order to get all business users"
+    //   );
 
     const users = await User.find().sort({ createdAt: "descending" });
     return res.send(users);

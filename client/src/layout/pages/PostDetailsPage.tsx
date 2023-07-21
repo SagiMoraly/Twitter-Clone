@@ -24,11 +24,12 @@ const PostDetailsPage = () => {
     return (
       <Container>
         <div>
-          <Post
+          {/* <Post
+            user={user}
             post={post}
             onDelete={(id) => console.log("you deleted post: " + id)}
             onLike={() => {}}
-          />
+          /> */}
         </div>
       </Container>
     );

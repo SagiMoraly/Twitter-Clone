@@ -4,13 +4,14 @@ import RegistrationForm, {
   UserMapToModelEditType,
 } from "../models/types/userType";
 import { editUser } from "../service/userApi";
-import { getUser } from "../service/userApi";
+import { getUser, getUsers } from "../service/userApi";
 import {
   UserMapToModelType,
   NormalizedEditUser,
 } from "../../users/models/types/userType";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
+import UserInterface from "../models/interfaces/UserInterface";
 
 export type userType =
   | null
@@ -19,11 +20,13 @@ export type userType =
   | string
   | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
+// type usersType = userType[] | null;
 
 const useUsertwo = () => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState<null | string>(null);
   const [user, setuser] = useState<userType>(null);
+  const [users, setUsers] = useState<UserInterface[] | null>(null);
 
   const navigate = useNavigate();
   const snack = useSnack();
@@ -31,21 +34,34 @@ const useUsertwo = () => {
   const requestStatus = (
     loading: boolean,
     errorMessage: ErrorType,
-    user: userType
+    user: userType,
+    users: UserInterface[] | null
   ) => {
     setLoading(loading);
     setError(errorMessage);
     setuser(user);
+    setUsers(users);
   };
 
   const handleGetUser = async (userId: string) => {
     try {
       setLoading(true);
       const user = await getUser(userId);
-      requestStatus(false, null, user);
+      requestStatus(false, null, user, null);
       return user;
     } catch (error) {
-      if (typeof error === "string") requestStatus(false, error, null);
+      if (typeof error === "string") requestStatus(false, error, null, null);
+    }
+  };
+
+  const handleGetUsers = async () => {
+    try {
+      setLoading(true);
+      const users = await getUsers();
+      requestStatus(false, null, null, users);
+      return user;
+    } catch (error) {
+      if (typeof error === "string") requestStatus(false, error, null, null);
     }
   };
 
@@ -55,17 +71,21 @@ const useUsertwo = () => {
         setLoading(true);
         const normalizedUser = normalizedEditUser(userFromClient);
         const userFomServer = await editUser(normalizedUser);
-        requestStatus(false, null, userFomServer);
+        requestStatus(false, null, userFomServer, null);
         snack("success", "The user has been successfully updated");
         // navigate(ROUTES.MY_CARDS);
       } catch (error) {
-        if (typeof error === "string") return requestStatus(false, error, null);
+        if (typeof error === "string")
+          return requestStatus(false, error, null, null);
       }
     },
     []
   );
+  const userValue = useMemo(() => {
+    return { isLoading, users, error };
+  }, [isLoading, users, error]);
 
-  return { handleGetUser, handleUpdateUser };
+  return { handleGetUser, handleUpdateUser, handleGetUsers, userValue };
 };
 
 export default useUsertwo;

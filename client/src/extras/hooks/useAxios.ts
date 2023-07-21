@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useSnack } from "../providers/SnackbarProvider";
-import { useUser } from "../../layout/collections/users/providers/UserProvider";
+import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
 import { useEffect } from "react";
 
 const useAxios = () => {
   const snack = useSnack();
-  const { token } = useUser();
+  const { token } = useUserLoged();
 
   useEffect(() => {
     axios.defaults.headers.common["x-auth-token"] = token;

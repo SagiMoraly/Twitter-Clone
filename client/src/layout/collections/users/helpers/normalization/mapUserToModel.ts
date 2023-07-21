@@ -12,8 +12,8 @@ const mapUserToModel = (user: UserInterface): UserMapToModelType => {
     last: user.profile.name.last,
     bio: user.profile.bio,
     location: user.profile.location,
-    url: user.profile.ProfilePicture.url,
-    alt: user.profile.ProfilePicture.alt,
+    url: user.profile.profilePicture.url,
+    alt: user.profile.profilePicture.alt,
     BGurl: user.profile.backGroundProfilePicture.BGurl,
     BGalt: user.profile.backGroundProfilePicture.BGalt,
   };

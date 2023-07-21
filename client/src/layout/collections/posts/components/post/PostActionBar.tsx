@@ -5,10 +5,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { useUser } from "../../../users/providers/UserProvider";
+import { useUserLoged } from "../../../users/providers/UserProvider";
 import PostDeleteDialog from "./PostDeleteDialog";
 import { useNavigate } from "react-router-dom";
-import { addFavPost, removeFavPost } from "../../services/postApiService";
+// import { addFavPost, removeFavPost } from "../../services/postApiService";
 
 type PostActionBarProps = {
   likes: string[];
@@ -26,7 +26,7 @@ const PostActionBar = ({
   onLike,
 }: PostActionBarProps) => {
   const [isDialogOpen, setDialog] = useState(false);
-  const { user } = useUser();
+  const { user } = useUserLoged();
   const [hasUserLiked, setHasUserLiked] = useState(
     user && likes?.includes(user?._id)
   );
@@ -50,18 +50,18 @@ const PostActionBar = ({
     onDelete(postId);
   };
 
-  const addOrRemove = async () => {
-    let resultsOfLike = false;
-    if (user) {
-      if (hasUserLiked) {
-        resultsOfLike = await removeFavPost(postId, user?._id);
-      } else {
-        resultsOfLike = await addFavPost(postId, user?._id);
-      }
-      resultsOfLike && setHasUserLiked(!hasUserLiked);
-      onLike();
-    }
-  };
+  // const addOrRemove = async () => {
+  //   let resultsOfLike = false;
+  //   if (user) {
+  //     if (hasUserLiked) {
+  //       resultsOfLike = await removeFavPost(postId, user?._id);
+  //     } else {
+  //       resultsOfLike = await addFavPost(postId, user?._id);
+  //     }
+  //     resultsOfLike && setHasUserLiked(!hasUserLiked);
+  //     onLike();
+  //   }
+  // };
 
   return (
     <>
@@ -95,7 +95,7 @@ const PostActionBar = ({
           </IconButton>
 
           {user && (
-            <IconButton aria-label="add to fav" onClick={addOrRemove}>
+            <IconButton aria-label="add to fav">
               {hasUserLiked ? (
                 <FavoriteIcon style={{ color: "red" }} />
               ) : (
@@ -115,3 +115,4 @@ const PostActionBar = ({
 };
 
 export default React.memo(PostActionBar);
+//onClick={addOrRemove}

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../collections/users/providers/UserProvider";
+import { useUserLoged } from "../collections/users/providers/UserProvider";
 import useHandleUsers from "../collections/users/hooks/useHandleUsers";
 import useForm from "../../extras/forms/hooks/useForm";
 import initialLoginForm from "../collections/users/helpers/initialForms/initialLoginForm";
@@ -11,7 +11,7 @@ import Input from "../../extras/forms/components/Input";
 import FormLink from "../../extras/forms/components/FormLink";
 
 const LoginPage = () => {
-  const { user } = useUser();
+  const { user } = useUserLoged();
   const { handleLogin } = useHandleUsers();
 
   const { value, ...rest } = useForm(

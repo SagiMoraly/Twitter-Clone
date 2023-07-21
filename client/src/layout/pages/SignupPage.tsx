@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../collections/users/providers/UserProvider";
+import { useUserLoged } from "../collections/users/providers/UserProvider";
 import useHandleUsers from "../collections/users/hooks/useHandleUsers";
 import useForm from "../../extras/forms/hooks/useForm";
 import initialSignupForm from "../collections/users/helpers/initialForms/initialSignupForm";
@@ -9,7 +9,7 @@ import Container from "@mui/material/Container";
 import UserForm from "../collections/users/components/UserForm";
 
 const SignupPage = () => {
-  const { user } = useUser();
+  const { user } = useUserLoged();
   const { handleSignup } = useHandleUsers();
   const { value, ...rest } = useForm(
     initialSignupForm,

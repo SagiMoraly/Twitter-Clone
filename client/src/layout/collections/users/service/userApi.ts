@@ -55,7 +55,7 @@ export const editUser = async (normalizedUser: UserTypeEdit) => {
 
 export const getUsers = async () => {
   try {
-    const { data } = await axios.get<string>(`${apiUrl}/users`);
+    const { data } = await axios.get<UserInterface[]>(`${apiUrl}/users`);
 
     return data;
   } catch (error) {
