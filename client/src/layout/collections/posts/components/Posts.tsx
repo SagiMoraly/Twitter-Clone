@@ -17,7 +17,7 @@ const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike, users }) => {
   };
 
   return (
-    <Grid container spacing={2} pb={2}>
+    <Grid container spacing={0} pb={0}>
       {posts.map((post) => {
         const authorId = post.author;
         const user = findUserById(authorId);
@@ -27,7 +27,7 @@ const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike, users }) => {
         }
 
         return (
-          <Grid item key={post._id} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={post._id}>
             <Post post={post} onDelete={onDelete} onLike={onLike} user={user} />
           </Grid>
         );
