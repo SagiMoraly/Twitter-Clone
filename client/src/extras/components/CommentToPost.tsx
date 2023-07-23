@@ -1,6 +1,6 @@
 import useForm from "../../extras/forms/hooks/useForm";
-import PostForm from "../../layout/collections/posts/components/PostForm";
-import initialCreatePostObject from "../../layout/collections/posts/helpers/initialForms/initialPostObject";
+import CommentForm from "../../layout/collections/posts/components/comment/CommentForm";
+import initialCreateCommentObject from "../../layout/collections/posts/helpers/initialForms/initialCreateCommentObject";
 import usePosts from "../../layout/collections/posts/hooks/usePosts";
 import postSchema from "../../layout/collections/posts/models/Joi/postSchema";
 import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
@@ -11,7 +11,7 @@ export const CommentToPost = () => {
   const { handleCreatePost } = usePosts();
   const { user } = useUserLoged();
   const { value, ...rest } = useForm(
-    initialCreatePostObject,
+    initialCreateCommentObject,
     postSchema,
     handleCreatePost
   );
@@ -20,7 +20,7 @@ export const CommentToPost = () => {
   const { handleInputChange, handleReset, onSubmit, validateForm } = rest;
   return (
     <Container>
-      <PostForm
+      <CommentForm
         data={data}
         errors={errors}
         onFormChange={validateForm}

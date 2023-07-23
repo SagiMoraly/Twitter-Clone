@@ -6,6 +6,10 @@ export type PostFromClientType = {
   alt: string;
 };
 
+export type CommentFromClientType = {
+  content: string;
+};
+
 export type PostMapToModelType = {
   _id: string;
   content: string;
@@ -25,3 +29,4 @@ export type NormalizedEditPost = {
 };
 
 export type CreatePostErrors = Partial<PostFromClientType>;
+export type CreateCommentErrors = Partial<CommentFromClientType>;

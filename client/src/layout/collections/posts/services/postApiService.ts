@@ -13,6 +13,21 @@ export const createPost = async (normalizedPost: object) => {
   }
 };
 
+export const createComment = async (
+  normalizedComment: object,
+  postId: string
+) => {
+  try {
+    const { data } = await axios.post(
+      `${apiUrl}/posts/${postId}`,
+      normalizedComment
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+  }
+};
+
 export const getPosts = async () => {
   try {
     const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts`);
