@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 // import PageHeader from "./../../components/PageHeader";
 import { useParams } from "react-router-dom";
@@ -13,37 +13,29 @@ const PostDetailsPage = () => {
   const { value, handleGetPost } = usePosts();
   const { post, error } = value;
   const { handleGetUser, userValue } = useUser();
-  const { user, isLoading } = userValue;
-
-  // console.log(postId);
-  // console.log(user);
+  const { user, isLoadingUser } = userValue;
 
   useEffect(() => {
-    if (postId) {
-      handleGetPost(postId);
-      if (post?.author) handleGetUser(post?.author);
-    }
-    console.log(post);
-    console.log(user);
+    if (postId)
+      handleGetPost(postId).then((post) => {
+        if (post?.author) handleGetUser(post?.author);
+      });
   }, []);
 
-  console.log(isLoading, post?._id, user?._id);
-  if (isLoading) return <Spinner />;
+  if (isLoadingUser) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
-  if (!isLoading && !post && !user) return <p>No post to display...</p>;
+  if (!isLoadingUser && !post && !user) return <p>No post to display...</p>;
 
-  if (!isLoading && post && user)
+  if (!isLoadingUser && post && user)
     return (
-      <Container>
-        <div>
-          <Post
-            user={user}
-            post={post}
-            onDelete={(id) => console.log("you deleted post: " + id)}
-            onLike={() => {}}
-          />
-        </div>
-      </Container>
+      <div>
+        <Post
+          user={user}
+          post={post}
+          onDelete={(id) => console.log("you deleted post: " + id)}
+          onLike={() => {}}
+        />
+      </div>
     );
 
   return null;

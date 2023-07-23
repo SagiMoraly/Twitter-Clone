@@ -24,7 +24,7 @@ type ErrorType = null | string;
 // type usersType = userType[] | null;
 
 const useUser = () => {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoadingUser, setLoadingUser] = useState(false);
   const [error, setError] = useState<null | string>(null);
   const [user, setuser] = useState<UserInterface | null>(null);
   const [users, setUsers] = useState<UserInterface[] | null>(null);
@@ -33,22 +33,22 @@ const useUser = () => {
   const snack = useSnack();
 
   const requestStatus = (
-    loading: boolean,
+    loadingUser: boolean,
     errorMessage: ErrorType,
-    user: userType,
-    users: UserInterface[] | null
+    users: UserInterface[] | null,
+    user: userType = null
   ) => {
-    setLoading(loading);
+    setLoadingUser(loadingUser);
     setError(errorMessage);
-    setuser(user);
     setUsers(users);
+    setuser(user);
   };
 
   const handleGetUser = async (userId: string) => {
     try {
-      setLoading(true);
+      setLoadingUser(true);
       const user = await getUser(userId);
-      requestStatus(false, null, user, null);
+      requestStatus(false, null, null, user);
       return user;
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null, null);
@@ -57,9 +57,9 @@ const useUser = () => {
 
   const handleGetUsers = async () => {
     try {
-      setLoading(true);
+      setLoadingUser(true);
       const users = await getUsers();
-      requestStatus(false, null, null, users);
+      requestStatus(false, null, users, null);
       return user;
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null, null);
@@ -69,10 +69,10 @@ const useUser = () => {
   const handleUpdateUser = useCallback(
     async (userFromClient: UserMapToModelEditType) => {
       try {
-        setLoading(true);
+        setLoadingUser(true);
         const normalizedUser = normalizedEditUser(userFromClient);
         const userFomServer = await editUser(normalizedUser);
-        requestStatus(false, null, userFomServer, null);
+        requestStatus(false, null, null, userFomServer);
         snack("success", "The user has been successfully updated");
         // navigate(ROUTES.MY_CARDS);
       } catch (error) {
@@ -83,8 +83,8 @@ const useUser = () => {
     []
   );
   const userValue = useMemo(() => {
-    return { isLoading, users, user, error };
-  }, [isLoading, users, user, error]);
+    return { isLoadingUser, users, user, error, setLoadingUser };
+  }, [isLoadingUser, users, user, error]);
 
   return { handleGetUser, handleUpdateUser, handleGetUsers, userValue };
 };
