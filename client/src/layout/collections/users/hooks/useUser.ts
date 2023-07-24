@@ -21,7 +21,7 @@ type ErrorType = null | string;
 const useUser = () => {
   const [isLoadingUser, setLoadingUser] = useState(false);
   const [error, setError] = useState<null | string>(null);
-  const [user, setuser] = useState<userType>(null);
+  const [user, setUser] = useState<userType>(null);
   const [users, setUsers] = useState<UserInterface[] | null>(null);
 
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const useUser = () => {
     setLoadingUser(loadingUser);
     setError(errorMessage);
     setUsers(users);
-    setuser(user);
+    setUser(user);
   };
 
   const handleGetUser = async (userId: string) => {
@@ -78,7 +78,7 @@ const useUser = () => {
     []
   );
   const userValue = useMemo(() => {
-    return { isLoadingUser, users, user, error, setLoadingUser };
+    return { isLoadingUser, users, user, error };
   }, [isLoadingUser, users, user, error]);
 
   return { handleGetUser, handleUpdateUser, handleGetUsers, userValue };

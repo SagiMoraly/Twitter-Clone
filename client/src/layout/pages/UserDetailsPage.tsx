@@ -19,8 +19,8 @@ const UserDetailsPage = () => {
 
   const { posts, error, isLoading } = value;
   const { handleGetUser, userValue, handleGetUsers } = useUser();
-  const { users } = userValue;
-  const [user, setUser] = useState<UserInterface | null | undefined>(null);
+  const { users, user } = userValue;
+  // const [user, setUser] = useState<UserInterface | null | undefined>(null);
 
   useEffect(() => {
     if (userId)
@@ -60,6 +60,7 @@ const UserDetailsPage = () => {
         </div>
       </div>
     );
+  console.log("we got null", user);
 
   return null;
 };
