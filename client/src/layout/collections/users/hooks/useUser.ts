@@ -60,7 +60,7 @@ const useUser = () => {
       setLoadingUser(true);
       const users = await getUsers();
       requestStatus(false, null, users, null);
-      return user;
+      return users;
     } catch (error) {
       if (typeof error === "string") requestStatus(false, error, null, null);
     }

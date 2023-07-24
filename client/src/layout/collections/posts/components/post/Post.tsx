@@ -7,6 +7,7 @@ import PostAvatar from "./PostAvatar";
 import CardActionBar from "./PostActionBar";
 import { useNavigate } from "react-router-dom";
 import PostInterface from "../../models/interfaces/PostInterface";
+// import CommentInterface from "../../models/interfaces/Comment";
 import UserInterface from "../../../users/models/interfaces/UserInterface";
 
 type PostProps = {
@@ -26,7 +27,7 @@ const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
       </CardActionArea>
       <CardActionArea onClick={() => navigate(`${"/post"}/${post._id}`)}>
         <PostBody post={post} />
-        {post.image.url && <PostHead image={post.image} />}
+        {post?.image.url && <PostHead image={post.image} />}
       </CardActionArea>
 
       <CardActionBar

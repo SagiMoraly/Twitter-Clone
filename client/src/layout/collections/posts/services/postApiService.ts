@@ -28,6 +28,17 @@ export const createComment = async (
   }
 };
 
+export const deleteComment = async (postId: string, commentId: string) => {
+  try {
+    const { data } = await axios.delete(
+      `${apiUrl}/posts/${postId}/${commentId}`
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) return Promise.reject(error.message);
+  }
+};
+
 export const getPosts = async () => {
   try {
     const { data } = await axios.get<PostInterface[]>(`${apiUrl}/posts`);
