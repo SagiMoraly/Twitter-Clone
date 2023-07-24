@@ -5,6 +5,7 @@ import LoginPage from "../layout/pages/LoginPage";
 import SignupPage from "../layout/pages/SignupPage";
 import { FeedPage } from "../layout/pages/FeedPage";
 import PostDetailsPage from "../layout/pages/PostDetailsPage";
+import UserDetailsPage from "../layout/pages/UserDetailsPage";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/home" element={<FeedPage />} />
       <Route path={"/post/:postId"} element={<PostDetailsPage />} />
+      <Route path={"/user/:userId"} element={<UserDetailsPage />} />
       <Route path="/about" />
     </Routes>
   );

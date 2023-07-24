@@ -30,7 +30,9 @@ export const signup = async (normalizedUser: UserType) => {
 
 export const getUser = async (userId: string) => {
   try {
-    const { data } = await axios.get<string>(`${apiUrl}/users/${userId}`);
+    const { data } = await axios.get<UserInterface>(
+      `${apiUrl}/users/${userId}`
+    );
 
     return data;
   } catch (error) {

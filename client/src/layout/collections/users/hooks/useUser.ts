@@ -13,12 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 import UserInterface from "../models/interfaces/UserInterface";
 
-export type userType =
-  | null
-  | UserInterface
-  | RegistrationForm
-  | undefined
-  | string;
+export type userType = null | UserInterface | RegistrationForm | undefined;
 // | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
 // type usersType = userType[] | null;
@@ -26,7 +21,7 @@ type ErrorType = null | string;
 const useUser = () => {
   const [isLoadingUser, setLoadingUser] = useState(false);
   const [error, setError] = useState<null | string>(null);
-  const [user, setuser] = useState<UserInterface | null>(null);
+  const [user, setuser] = useState<userType>(null);
   const [users, setUsers] = useState<UserInterface[] | null>(null);
 
   const navigate = useNavigate();

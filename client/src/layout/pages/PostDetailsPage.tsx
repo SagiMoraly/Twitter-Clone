@@ -46,8 +46,6 @@ const PostDetailsPage = () => {
   if (error) return <Error errorMessage={error} />;
   if (!isLoadingUser && !post && !users) return <p>No post to display...</p>;
 
-  console.log("yea", user?._id, post?._id, users);
-
   if (!isLoadingUser && post && user)
     return (
       <div>

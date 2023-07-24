@@ -7,6 +7,7 @@ import {
   getPosts,
   getMyPosts,
   getFavPosts,
+  getUserPosts,
 } from "../services/postApiService";
 import useAxios from "../../../../extras/hooks/useAxios";
 // import normalizePost from "./../helpers/normalization/normalizePost";
@@ -51,6 +52,16 @@ const usePosts = () => {
     try {
       setLoading(true);
       const posts = await getPosts();
+      requestStatus(false, null, posts);
+    } catch (error) {
+      if (typeof error === "string") return requestStatus(false, error, null);
+    }
+  }, []);
+
+  const handleGetUserPosts = useCallback(async (userId: string) => {
+    try {
+      setLoading(true);
+      const posts = await getUserPosts(userId);
       requestStatus(false, null, posts);
     } catch (error) {
       if (typeof error === "string") return requestStatus(false, error, null);
@@ -144,6 +155,7 @@ const usePosts = () => {
     handleDeletePost,
     handleUpdatePost,
     handleGetFavPost,
+    handleGetUserPosts,
   };
 };
 
