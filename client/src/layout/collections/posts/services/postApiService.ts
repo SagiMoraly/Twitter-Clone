@@ -126,7 +126,7 @@ export const getFeed = async () => {
 export const getUserPosts = async (userId: string) => {
   try {
     const { data } = await axios.get<PostInterface[]>(
-      `${apiUrl}/postsUser/${userId}`
+      `${apiUrl}/posts/postsUser/${userId}`
     );
 
     return Promise.resolve(data);
