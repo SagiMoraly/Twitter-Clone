@@ -118,6 +118,24 @@ const UserFormEdit: FC<Props> = ({
         breakPoints={{ sm: 6 }}
         required={false}
       />
+      <Input
+        name="BGurl"
+        label="background image url"
+        error={errors.BGurl}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+        required={false}
+      />
+      <Input
+        name="BGalt"
+        label="background image alt"
+        error={errors.BGalt}
+        onInputChange={onInputChange}
+        data={data}
+        breakPoints={{ sm: 6 }}
+        required={false}
+      />
     </Form>
   );
 };

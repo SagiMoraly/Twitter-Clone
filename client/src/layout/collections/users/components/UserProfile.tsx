@@ -23,7 +23,7 @@ const UserProfile: React.FC<PostProps> = ({ onDelete, onLike, user }) => {
     return (
       <MuiCard sx={{ minWidth: 700 }} elevation={4}>
         {/* User Avatar and Name */}
-        <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
+        <CardActionArea onClick={() => navigate(`${"/edit/user"}/${user._id}`)}>
           {/* <PostAvatar user={user} time={post.timestamp} /> */}
           <h2>{user.userName}</h2>{" "}
           {/* Assuming the user object has a 'name' property */}

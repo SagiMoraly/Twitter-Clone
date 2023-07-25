@@ -32,15 +32,16 @@ const useForm = <TForm extends Record<string, unknown>>(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
       const { name, value } = target;
       const errorMessage = validateProperty(target);
-      if (errorMessage) setErrors(prev => ({ ...prev, [name]: errorMessage }));
+      if (errorMessage)
+        setErrors((prev) => ({ ...prev, [name]: errorMessage }));
       else
-        setErrors(prev => {
+        setErrors((prev) => {
           let obj: Record<string, string> = { ...prev };
           delete obj[name];
           return obj;
         });
 
-      setData(prev => ({ ...prev, [name]: value }));
+      setData((prev) => ({ ...prev, [name]: value }));
     },
     [validateProperty]
   );

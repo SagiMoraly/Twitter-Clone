@@ -7,6 +7,7 @@ import { FeedPage } from "../layout/pages/FeedPage";
 import PostDetailsPage from "../layout/pages/PostDetailsPage";
 import UserDetailsPage from "../layout/pages/UserDetailsPage";
 import EditPostPage from "../layout/pages/EditPostPage";
+import EditUserPage from "../layout/pages/EditUserPage";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path={"/post/:postId"} element={<PostDetailsPage />} />
       <Route path={"/user/:userId"} element={<UserDetailsPage />} />
       <Route path={"/edit/post/:postId"} element={<EditPostPage />} />
+      <Route path={"/edit/user/:userId"} element={<EditUserPage />} />
       <Route path="/about" />
     </Routes>
   );

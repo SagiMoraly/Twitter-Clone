@@ -120,7 +120,7 @@ const UserForm: FC<Props> = ({
       />
       <Input
         name="BGurl"
-        label="image url"
+        label="background image url"
         error={errors.BGurl}
         onInputChange={onInputChange}
         data={data}
@@ -129,7 +129,7 @@ const UserForm: FC<Props> = ({
       />
       <Input
         name="BGalt"
-        label="image alt"
+        label="background image alt"
         error={errors.BGalt}
         onInputChange={onInputChange}
         data={data}
