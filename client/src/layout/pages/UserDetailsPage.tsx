@@ -19,13 +19,14 @@ const UserDetailsPage = () => {
 
   const { posts, error, isLoading } = value;
   const { handleGetUser, userValue, handleGetUsers } = useUser();
-  const { users, user } = userValue;
-  // const [user, setUser] = useState<UserInterface | null | undefined>(null);
+  const { user } = userValue;
+  const [users, setUsers] = useState<UserInterface[] | null>(null);
 
   useEffect(() => {
     if (userId)
       handleGetUser(userId).then((user) => {
         if (user?._id) {
+          setUsers([user]);
           handleGetUserPosts(user._id);
         }
       });
@@ -41,6 +42,18 @@ const UserDetailsPage = () => {
   if (error) return <Error errorMessage={error} />;
   if (!isLoading && !posts && !users) return <p>No post to display...</p>;
 
+  // console.log(
+  //   <PostFeedback
+  //     posts={posts}
+  //     users={users}
+  //     error={error}
+  //     isLoading={isLoading}
+  //     onDelete={onDeletePost}
+  //   />
+  // );
+  // console.log(user);
+  // console.log(isLoading);
+
   if (!isLoading && posts && user)
     return (
       <div>
@@ -49,18 +62,16 @@ const UserDetailsPage = () => {
           onDelete={(id) => console.log("you deleted post: " + id)}
           onLike={() => {}}
         />
-        <div>
-          <PostFeedback
-            posts={posts}
-            users={users}
-            error={error}
-            isLoading={isLoading}
-            onDelete={onDeletePost}
-          />
-        </div>
+
+        <PostFeedback
+          posts={posts}
+          users={users}
+          error={error}
+          isLoading={isLoading}
+          onDelete={onDeletePost}
+        />
       </div>
     );
-  console.log("we got null", user);
 
   return null;
 };

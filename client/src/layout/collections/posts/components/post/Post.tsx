@@ -33,7 +33,7 @@ const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
       <CardActionBar
         likes={post.likes}
         postId={post._id}
-        postUserId={post.author}
+        author={post.author}
         onDelete={onDelete}
         onLike={onLike}
       />

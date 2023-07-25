@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, IconButton } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
+import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CallIcon from "@mui/icons-material/Call";
@@ -8,12 +9,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useUserLoged } from "../../../users/providers/UserProvider";
 import PostDeleteDialog from "./PostDeleteDialog";
 import { useNavigate } from "react-router-dom";
-// import { addFavPost, removeFavPost } from "../../services/postApiService";
+import { likePost } from "../../services/postApiService";
 
 type PostActionBarProps = {
   likes: string[];
   postId: string;
-  postUserId: string;
+  author: string;
   onDelete: (id: string) => void;
   onLike: () => void;
 };
@@ -21,7 +22,7 @@ type PostActionBarProps = {
 const PostActionBar = ({
   likes,
   postId,
-  postUserId,
+  author,
   onDelete,
   onLike,
 }: PostActionBarProps) => {
@@ -30,15 +31,16 @@ const PostActionBar = ({
   const [hasUserLiked, setHasUserLiked] = useState(
     user && likes?.includes(user?._id)
   );
+  const [numberOfLikes, setNumberOfLikes] = useState(likes.length);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (user && likes?.includes(user?._id)) {
-  //     setHasUserLiked(true);
-  //   } else {
-  //     setHasUserLiked(false);
-  //   }
-  // }, [user, likes, cardUserId]);
+  useEffect(() => {
+    if (user && likes?.includes(user?._id)) {
+      setHasUserLiked(true);
+    } else {
+      setHasUserLiked(false);
+    }
+  }, [user, likes, author]);
 
   const handleDialog = (term?: string) => {
     if (term === "open") return setDialog(true);
@@ -70,7 +72,7 @@ const PostActionBar = ({
         sx={{ pt: 0, justifyContent: "space-between" }}
       >
         <Box>
-          {user && (user._id === postUserId || user.isAdmin) && (
+          {user && (user._id === author || user.isAdmin) && (
             <IconButton
               aria-label="delete post"
               onClick={() => handleDialog("open")}
@@ -79,7 +81,7 @@ const PostActionBar = ({
             </IconButton>
           )}
 
-          {user?._id === postUserId && (
+          {user?._id === author && (
             <IconButton
               aria-label="edit post"
               onClick={() => navigate(`${"/edit"}/${postId}`)}
@@ -90,18 +92,33 @@ const PostActionBar = ({
         </Box>
 
         <Box>
-          <IconButton aria-label="call business">
-            <CallIcon />
+          <IconButton
+            aria-label="comment"
+            onClick={() => navigate(`${"/post"}/${postId}`)}
+          >
+            <ModeCommentIcon />
           </IconButton>
 
           {user && (
-            <IconButton aria-label="add to fav">
-              {hasUserLiked ? (
-                <FavoriteIcon style={{ color: "red" }} />
-              ) : (
-                <FavoriteIcon />
-              )}
-            </IconButton>
+            <>
+              <span>{numberOfLikes}</span>
+              <IconButton
+                aria-label="likes"
+                onClick={() => {
+                  likePost(postId);
+                  hasUserLiked
+                    ? setNumberOfLikes(numberOfLikes - 1)
+                    : setNumberOfLikes(numberOfLikes + 1);
+                  setHasUserLiked(!hasUserLiked);
+                }}
+              >
+                {hasUserLiked ? (
+                  <FavoriteIcon style={{ color: "red" }} />
+                ) : (
+                  <FavoriteIcon />
+                )}
+              </IconButton>
+            </>
           )}
         </Box>
       </CardActions>
@@ -115,4 +132,3 @@ const PostActionBar = ({
 };
 
 export default React.memo(PostActionBar);
-//onClick={addOrRemove}

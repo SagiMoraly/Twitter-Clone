@@ -8,9 +8,10 @@ import CardActionArea from "@mui/material/CardActionArea";
 import { useNavigate } from "react-router-dom";
 import PostInterface from "../../posts/models/interfaces/PostInterface";
 import UserInterface from "../models/interfaces/UserInterface";
+import { userType } from "../hooks/useUser";
 
 type PostProps = {
-  user: UserInterface;
+  user: userType;
   onDelete: (id: string) => void;
   onLike: () => void;
 };
@@ -18,19 +19,21 @@ type PostProps = {
 const UserProfile: React.FC<PostProps> = ({ onDelete, onLike, user }) => {
   const navigate = useNavigate();
 
-  return (
-    <MuiCard sx={{ minWidth: 700 }} elevation={4}>
-      {/* User Avatar and Name */}
-      <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
-        {/* <PostAvatar user={user} time={post.timestamp} /> */}
-        <h2>{user.userName}</h2>{" "}
-        {/* Assuming the user object has a 'name' property */}
-        {/* Add more user information here, like bio, followers, etc. */}
-      </CardActionArea>
+  if (user)
+    return (
+      <MuiCard sx={{ minWidth: 700 }} elevation={4}>
+        {/* User Avatar and Name */}
+        <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
+          {/* <PostAvatar user={user} time={post.timestamp} /> */}
+          <h2>{user.userName}</h2>{" "}
+          {/* Assuming the user object has a 'name' property */}
+          {/* Add more user information here, like bio, followers, etc. */}
+        </CardActionArea>
 
-      {/* User Actions (e.g., Follow, Message) */}
-    </MuiCard>
-  );
+        {/* User Actions (e.g., Follow, Message) */}
+      </MuiCard>
+    );
+  return null;
 };
 
 export default UserProfile;

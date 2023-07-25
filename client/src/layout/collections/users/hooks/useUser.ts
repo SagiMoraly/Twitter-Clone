@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 import UserInterface from "../models/interfaces/UserInterface";
 
-export type userType = null | UserInterface | RegistrationForm | undefined;
+export type userType = null | UserInterface | undefined;
 // | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
 // type usersType = userType[] | null;
