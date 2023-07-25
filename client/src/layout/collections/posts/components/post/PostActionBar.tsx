@@ -4,7 +4,6 @@ import CardActions from "@mui/material/CardActions";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import CallIcon from "@mui/icons-material/Call";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useUserLoged } from "../../../users/providers/UserProvider";
 import PostDeleteDialog from "./PostDeleteDialog";
@@ -52,19 +51,6 @@ const PostActionBar = ({
     onDelete(postId);
   };
 
-  // const addOrRemove = async () => {
-  //   let resultsOfLike = false;
-  //   if (user) {
-  //     if (hasUserLiked) {
-  //       resultsOfLike = await removeFavPost(postId, user?._id);
-  //     } else {
-  //       resultsOfLike = await addFavPost(postId, user?._id);
-  //     }
-  //     resultsOfLike && setHasUserLiked(!hasUserLiked);
-  //     onLike();
-  //   }
-  // };
-
   return (
     <>
       <CardActions
@@ -84,7 +70,7 @@ const PostActionBar = ({
           {user?._id === author && (
             <IconButton
               aria-label="edit post"
-              onClick={() => navigate(`${"/edit"}/${postId}`)}
+              onClick={() => navigate(`${"/edit/post"}/${postId}`)}
             >
               <EditIcon />
             </IconButton>
