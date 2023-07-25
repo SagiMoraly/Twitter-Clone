@@ -17,7 +17,7 @@ const Router = () => {
       <Route path="/home" element={<FeedPage />} />
       <Route path={"/post/:postId"} element={<PostDetailsPage />} />
       <Route path={"/user/:userId"} element={<UserDetailsPage />} />
-      <Route path={"/edit/post/:userId"} element={<EditPostPage />} />
+      <Route path={"/edit/post/:postId"} element={<EditPostPage />} />
       <Route path="/about" />
     </Routes>
   );

@@ -32,8 +32,9 @@ const EditPostPage = () => {
     if (postId)
       handleGetPost(postId).then(
         (postFromServer: PostInterface | undefined) => {
-          if (postFromServer || user?._id !== postFromServer!.author)
+          if (!postFromServer || user?._id !== postFromServer!.author)
             return navigate("/");
+
           const modeledPost = mapPostToModel(postFromServer!);
           setData(modeledPost);
         }
