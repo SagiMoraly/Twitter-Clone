@@ -4,7 +4,7 @@ import RegistrationForm, {
   UserMapToModelEditType,
 } from "../models/types/userType";
 import { editUser } from "../service/userApi";
-import { getUser, getUsers } from "../service/userApi";
+import { getUser, getUsers, followUser } from "../service/userApi";
 import {
   UserMapToModelType,
   NormalizedEditUser,
@@ -77,11 +77,29 @@ const useUser = () => {
     },
     []
   );
+
+  const handleFollowUser = async (userId: string) => {
+    try {
+      setLoadingUser(true);
+      const user = await followUser(userId);
+      requestStatus(false, null, null, null);
+      return user;
+    } catch (error) {
+      if (typeof error === "string") requestStatus(false, error, null, null);
+    }
+  };
+
   const userValue = useMemo(() => {
     return { isLoadingUser, users, user, error };
   }, [isLoadingUser, users, user, error]);
 
-  return { handleGetUser, handleUpdateUser, handleGetUsers, userValue };
+  return {
+    handleGetUser,
+    handleUpdateUser,
+    handleGetUsers,
+    handleFollowUser,
+    userValue,
+  };
 };
 
 export default useUser;

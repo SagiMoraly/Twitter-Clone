@@ -79,13 +79,13 @@ export const DeleteUser = async (userId: string) => {
 
 export const followUser = async (userId: string) => {
   try {
-    const response = await axios.patch(`${apiUrl}/users/${userId}`, {
-      //  $push: { likes: userId }, // could be not nesesery
-    });
-    return true;
+    const response = await axios.patch<UserInterface>(
+      `${apiUrl}/users/follow/${userId}`
+    );
+    return response;
   } catch (error) {
     console.error(error);
-    return false;
+    return Promise.reject("An unexpected error occurred!");
   }
 };
 

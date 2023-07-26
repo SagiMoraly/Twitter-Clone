@@ -1,49 +1,48 @@
 import React, { useEffect, useState } from "react";
-import usePosts from "../../layout/collections/posts/hooks/usePosts";
+import useUser from "../../layout/collections/users/hooks/useUser";
 
 import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
 
-const useSearch = (whatHandle?: string) => {
-  const { value, handleGetFavPost, handleGetPosts, handleGetMyPosts } =
-    usePosts();
-  const { posts } = value;
+const useSearch = () => {
+  const { userValue, handleGetUsers } = useUser();
+  const { users } = userValue;
 
   const { user } = useUserLoged();
 
   const [searchQuery, setSearchQuery] = useState(""); // State variable for search query
-  const [filteredPosts, setFilteredPosts] = useState(posts); // State variable for filtered cards
+  const [filteredUsers, setFilteredUsers] = useState(users); // State variable for filtered cards
 
   useEffect(() => {
-    if (whatHandle == "allPosts") handleGetPosts();
-    else if (whatHandle == "favPosts" && user) handleGetFavPost(user?._id);
-    else if (whatHandle == "myPosts") handleGetMyPosts();
-    else handleGetPosts();
+    handleGetUsers();
   }, []);
 
-  const filterPosts = () => {
-    setFilteredPosts((prevPosts) => {
-      if (posts === undefined) {
+  const filterUsers = () => {
+    setFilteredUsers((prevUsers) => {
+      if (users === undefined) {
         return null;
       }
       if (searchQuery.trim() === "") {
-        return posts;
+        return users;
+        // return null;
       }
-      if (prevPosts === null) {
+      if (prevUsers === null) {
         return null;
       }
-      return prevPosts.filter(
-        (post) => {
-          console.log(post);
-        }
-        // post.title &&
-        // post.title.toLowerCase().includes(searchQuery.toLowerCase())
+      return prevUsers.filter(
+        (user) =>
+          user.userName &&
+          user.userName.toLowerCase().includes(searchQuery.toLowerCase())
       );
     });
   };
+  // console.log(user.userName, searchQuery);
+  // console.log(
+  //   user.userName.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
 
   useEffect(() => {
-    filterPosts();
-  }, [posts, searchQuery]);
+    filterUsers();
+  }, [users, searchQuery]);
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
@@ -53,9 +52,9 @@ const useSearch = (whatHandle?: string) => {
     handleSearch,
     searchQuery,
     setSearchQuery,
-    filteredPosts,
-    setFilteredPosts,
-    filterPosts,
+    filteredUsers,
+    setFilteredUsers,
+    filterUsers,
   };
 };
 
