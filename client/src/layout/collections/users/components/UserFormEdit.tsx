@@ -91,7 +91,7 @@ const UserFormEdit: FC<Props> = ({
         data={data}
         breakPoints={{ sm: 6 }}
       />
-      <Input
+      {/* <Input
         name="password"
         label="password"
         type="password"
@@ -99,7 +99,7 @@ const UserFormEdit: FC<Props> = ({
         onInputChange={onInputChange}
         data={data}
         breakPoints={{ sm: 6 }}
-      />
+      /> */}
       <Input
         name="url"
         label="image url"

@@ -86,6 +86,7 @@ const getUser = async (req, res) => {
     //     throw new Error(
     //       "A user dose not have the ability to use this function"
     //     );
+
     user = await User.findById(userId);
 
     if (!user)
@@ -101,7 +102,6 @@ const updateUser = async (req, res) => {
   try {
     let user = req.body;
     const { userId } = req.params;
-    console.log(user, userId);
     if (!(user._id === userId))
       throw new Error("A user dose not have the ability to use this function");
     user = await normalizeUser(user);

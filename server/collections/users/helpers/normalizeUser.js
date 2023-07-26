@@ -29,9 +29,8 @@ const normalizeUser = (rawUser) => {
   const user = {
     ...rawUser,
     profile,
-    password: generateUserPassword(rawUser.password),
+    // password: generateUserPassword(rawUser.password),
   };
-  console.log(user);
   return user;
 };
 
