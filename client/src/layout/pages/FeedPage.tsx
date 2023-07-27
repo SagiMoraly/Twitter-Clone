@@ -29,9 +29,11 @@ export const FeedPage = () => {
   //   console.log(user);
   return (
     <div>
-      <h1>Home</h1>
+      <div style={{ borderBottom: "2px solid #e7ecf0" }}>
+        <h1 style={{ marginLeft: "8px" }}>Home</h1>
+      </div>
       <Twitting />
-      <div>
+      <div style={{ borderTop: "15px solid #e7ecf0" }}>
         <PostFeedback
           posts={posts}
           users={users}

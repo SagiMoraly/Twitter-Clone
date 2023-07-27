@@ -67,6 +67,9 @@ const FormTweet: FC<Props> = ({
             padding="10px 20px"
           />
         </Grid>
+        <Grid item xs={2}>
+          <div></div>
+        </Grid>
       </Grid>
     </Box>
   );

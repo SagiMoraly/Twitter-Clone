@@ -30,25 +30,29 @@ const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike, users }) => {
 
         if ("comments" in item) {
           return (
+            <div className="post">
+              <Grid item key={item._id}>
+                <Post
+                  post={item}
+                  onDelete={onDelete}
+                  onLike={onLike}
+                  user={user}
+                />
+              </Grid>
+            </div>
+          );
+        }
+        return (
+          <div className="post">
             <Grid item key={item._id}>
-              <Post
-                post={item}
+              <Comment
+                comment={item}
                 onDelete={onDelete}
                 onLike={onLike}
                 user={user}
               />
             </Grid>
-          );
-        }
-        return (
-          <Grid item key={item._id}>
-            <Comment
-              comment={item}
-              onDelete={onDelete}
-              onLike={onLike}
-              user={user}
-            />
-          </Grid>
+          </div>
         );
       })}
     </Grid>

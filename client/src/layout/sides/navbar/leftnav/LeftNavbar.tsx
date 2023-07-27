@@ -11,28 +11,34 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 import NavItem from "../../../../extras/components/NavItem";
+import { Typography } from "@mui/material";
 
 export const LeftNavbar = () => {
   return (
     <div className="navbar">
-      <Stack className="stickToRight">
+      <Stack className="stickToRight" alignItems="flex-start" spacing={2}>
         <Button variant="text" component={Link} to="/">
-          <TwitterIcon />
+          <TwitterIcon sx={{ fontSize: 40 }} />
         </Button>
         <Button variant="text" component={Link} to="/home">
-          <HomeIcon /> home
+          <HomeIcon sx={{ fontSize: 30 }} />{" "}
+          <Typography variant="h6">home</Typography>
         </Button>
         <Button variant="text" component={Link} to="/search">
-          <SearchIcon /> search
+          <SearchIcon sx={{ fontSize: 30 }} />{" "}
+          <Typography variant="h6">search</Typography>
         </Button>
         <Button variant="text" component={Link} to="/profile">
-          <PermIdentityIcon /> profile
+          <PermIdentityIcon sx={{ fontSize: 30 }} />{" "}
+          <Typography variant="h6">profile</Typography>
         </Button>
         <Button variant="text" component={Link} to="/connect">
-          <AlternateEmailIcon /> connect
+          <AlternateEmailIcon sx={{ fontSize: 30 }} />{" "}
+          <Typography variant="h6">connect</Typography>
         </Button>
         <Button variant="text" component={Link} to="/tweet">
-          <ChatIcon /> tweet
+          <ChatIcon sx={{ fontSize: 30 }} />{" "}
+          <Typography variant="h6">tweet</Typography>
         </Button>
       </Stack>
     </div>

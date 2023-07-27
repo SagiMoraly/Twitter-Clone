@@ -19,12 +19,21 @@ type PostProps = {
 
 const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
   const navigate = useNavigate();
-
+  // elevation={4}
   return (
-    <MuiCard sx={{ minWidth: 700 }} elevation={4}>
+    <MuiCard
+      sx={{
+        minWidth: 700,
+        borderRadius: 0,
+        paddingTop: 2,
+        paddingLeft: 0.5,
+        paddingRight: 0.5,
+      }}
+    >
       <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
         <PostAvatar user={user} time={post.timestamp} />
       </CardActionArea>
+
       <CardActionArea onClick={() => navigate(`${"/post"}/${post._id}`)}>
         <PostBody post={post} />
         {post?.image.url && <PostHead image={post.image} />}

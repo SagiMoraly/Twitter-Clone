@@ -22,7 +22,7 @@ type Props = {
 };
 
 const Input: FC<Props> = ({
-  variant = "outlined",
+  // variant = "outlined",
   type = "text",
   name,
   data,
@@ -37,7 +37,7 @@ const Input: FC<Props> = ({
   return (
     <Grid item xs={12} {...breakPoints}>
       <TextField
-        variant={variant}
+        // variant={variant}
         label={makeFirstLetterCapital(label)}
         type={type}
         id={name}
@@ -50,7 +50,11 @@ const Input: FC<Props> = ({
         fullWidth
         autoComplete="off"
         multiline={multiline}
-        inputProps={{ style: { height: height ? `${height}px` : undefined } }}
+        inputProps={{
+          style: {
+            height: height ? `${height}px` : undefined,
+          },
+        }}
       />
     </Grid>
   );

@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from "react";
+import React, { FC, ChangeEvent, useState } from "react";
 import FormTweet from "../../../../extras/forms/components/FormTweet";
 import Input from "../../../../extras/forms/components/Input";
 import Joi from "joi";
@@ -6,6 +6,7 @@ import {
   PostFromClientType,
   CreatePostErrors,
 } from "../models/types/postTypes";
+import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import TextField from "@mui/material/TextField";
 // import AppBar from '@mui/material/AppBar'
 // import Toolbar from '@mui/material/Toolbar'
@@ -32,6 +33,7 @@ const PostForm: FC<Props> = ({
   data,
   onInputChange,
 }) => {
+  const [imageOpen, setImageOpen] = useState(false);
   return (
     <FormTweet
       onSubmit={onSubmit}
@@ -43,7 +45,7 @@ const PostForm: FC<Props> = ({
     >
       <Input
         name="content"
-        label="tweet out!!!"
+        label="What's happening?"
         error={errors.content}
         onInputChange={onInputChange}
         data={data}
@@ -52,28 +54,41 @@ const PostForm: FC<Props> = ({
         multiline={true}
         height={130}
       />
-      <Input
-        name="url"
-        label="image url"
-        error={errors.url}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-        variant="filled"
-      />
-      <Input
-        name="alt"
-        label="image alt"
-        error={errors.alt}
-        onInputChange={onInputChange}
-        data={data}
-        breakPoints={{ sm: 6 }}
-        required={false}
-        variant="filled"
-      />
+      {imageOpen && (
+        <>
+          <Input
+            name="url"
+            label="image url"
+            error={errors.url}
+            onInputChange={onInputChange}
+            data={data}
+            breakPoints={{ sm: 5 }}
+            required={false}
+            variant="filled"
+          />
+          <Input
+            name="alt"
+            label="image alt"
+            error={errors.alt}
+            onInputChange={onInputChange}
+            data={data}
+            breakPoints={{ sm: 5 }}
+            required={false}
+            variant="filled"
+          />
+        </>
+      )}
+      <div style={{ margin: "17px" }}>
+        <ImageOutlinedIcon
+          onClick={() => {
+            setImageOpen(!imageOpen);
+          }}
+          fontSize="large"
+          sx={{ color: "#45a7e9" }}
+        ></ImageOutlinedIcon>
+      </div>
     </FormTweet>
   );
 };
-
+// marginTop: "17px", marginLeft: "17px"
 export default React.memo(PostForm);

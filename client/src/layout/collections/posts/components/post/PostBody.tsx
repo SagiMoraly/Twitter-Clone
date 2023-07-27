@@ -14,7 +14,6 @@ const PostBody = ({ post }: PostBodyProps) => {
   return (
     <CardContent>
       <CardHeader title={post.content} sx={{ p: 0, mb: 1 }} />
-      <Divider />
     </CardContent>
   );
 };
