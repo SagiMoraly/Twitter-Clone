@@ -7,16 +7,19 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import ChatIcon from "@mui/icons-material/Chat";
 import { useUserLoged } from "../../../collections/users/providers/UserProvider";
+import useHandleUsers from "../../../collections/users/hooks/useHandleUsers";
+import CardActionArea from "@mui/material/CardActionArea";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 import NavItem from "../../../../extras/components/NavItem";
-import { Typography } from "@mui/material";
+import { Typography, Avatar, Box } from "@mui/material";
 
 export const LeftNavbar = () => {
   const { user } = useUserLoged();
   const location = useLocation();
+  const { handleLogout } = useHandleUsers();
 
   const profilePageLink = `/user/${user?._id}`;
 
@@ -41,17 +44,6 @@ export const LeftNavbar = () => {
             home
           </Typography>
         </Button>
-        {/* <Button
-          variant="text"
-          component={Link}
-          to="/search"
-          style={{ color: isActivePage("/search") ? "" : "black" }}
-        >
-          <SearchIcon sx={{ fontSize: 30 }} />
-          <Typography className="nav-link-text" variant="h6">
-            search
-          </Typography>
-        </Button> */}
         <Button
           variant="text"
           component={Link}
@@ -85,6 +77,25 @@ export const LeftNavbar = () => {
             tweet
           </Typography>
         </Button>
+        <div style={{ position: "absolute", bottom: 45 }}>
+          <Box display="flex" alignItems="center">
+            <Avatar alt={user?.alt} src={user?.url} />
+            <Typography>{`@${user?.userName}`}</Typography>
+            <div>
+              <CardActionArea
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                <Typography
+                  style={{ position: "absolute", right: 0, marginTop: 20 }}
+                >
+                  logout
+                </Typography>
+              </CardActionArea>
+            </div>
+          </Box>
+        </div>
       </Stack>
     </div>
   );

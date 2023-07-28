@@ -45,8 +45,11 @@ const login = async (req, res) => {
     if (!isPasswordValid)
       throw new Error("Authentication Error: Invalid email or password");
 
-    const { _id, isBusiness, isAdmin } = userInDb;
-    const token = generateAuthToken({ _id, isBusiness, isAdmin });
+    const { _id, isAdmin, profile, userName } = userInDb;
+    const { profilePicture } = profile;
+    const { url, alt } = profilePicture;
+
+    const token = generateAuthToken({ _id, isAdmin, userName, url, alt });
 
     res.send(token);
   } catch (error) {
