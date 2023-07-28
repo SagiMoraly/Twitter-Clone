@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, IconButton } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Button } from "@mui/material";
 import { useUserLoged } from "../../layout/collections/users/providers/UserProvider";
 import UserInterface from "../../layout/collections/users/models/interfaces/UserInterface";
 
@@ -31,14 +26,16 @@ const FollowButton = ({ following, curUser, onFollow }: FollowButtonProps) => {
   return (
     <>
       {user && (
-        <button
+        <Button
+          sx={{ backgroundColor: "#1DA1F2", borderRadius: "16px" }}
+          variant="contained"
           onClick={() => {
             onFollow(curUser._id);
             setHasUserFollow(!hasUserFollow);
           }}
         >
           {user && hasUserFollow ? "Unfollow" : "Follow"}
-        </button>
+        </Button>
       )}
     </>
   );
