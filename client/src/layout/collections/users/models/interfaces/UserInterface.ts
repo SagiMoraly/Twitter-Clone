@@ -8,6 +8,7 @@ interface UserInterface {
   profile: ProfileInterface;
   followers: string[];
   following: string[];
+  createdAt: string;
 }
 
 export default UserInterface;

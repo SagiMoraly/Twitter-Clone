@@ -32,7 +32,7 @@ const EditUserPage = () => {
   useEffect(() => {
     if (userId)
       handleGetUser(userId).then((userFromServer: any) => {
-        if (user?._id !== userFromServer!._id) return navigate("/");
+        if (user?._id !== userFromServer!._id) return navigate("/home");
         const modeleduser = mapUserEditToModel(userFromServer!);
         setData(modeleduser);
       });

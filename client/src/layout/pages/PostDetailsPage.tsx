@@ -55,6 +55,7 @@ const PostDetailsPage = () => {
           onDelete={(id) => console.log("you deleted post: " + id)}
           onLike={() => {}}
         />
+        <div style={{ borderTop: "15px solid #e7ecf0" }}></div>
         <PostsFeedback
           posts={post.comments}
           users={users}

@@ -13,7 +13,7 @@ const normalizeUser = (rawUser) => {
     ...rawUser.profile.backGroundProfilePicture,
     BGurl:
       rawUser.profile.backGroundProfilePicture.BGurl ||
-      "https://images.ctfassets.net/7thvzrs93dvf/wpImage18643/2f45c72db7876d2f40623a8b09a88b17/linkedin-default-background-cover-photo-1.png?w=790&h=196&q=90&fm=png",
+      "https://media.licdn.com/dms/image/D4D16AQFiguoafFcmRg/profile-displaybackgroundimage-shrink_350_1400/0/1688554604486?e=1695859200&v=beta&t=AkZ0tcWxrC99y5C9lPn11o8zAP_v0D-AKsyXzhkYX6M",
     BGalt:
       rawUser.profile.backGroundProfilePicture.BGalt || "User profile image",
   };

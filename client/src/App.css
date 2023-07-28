@@ -14,7 +14,7 @@
 }
 
 .stickToRight {
-  width: 220px;
+  /* width: 220px; */
   right: 0;
   padding-top: 7px;
   padding-right: 7px;
@@ -61,5 +61,17 @@
 @media (max-width: 790px) {
   .navbar {
     display: none;
+  }
+}
+
+@media (max-width: 920px) {
+  .nav-link-text {
+    display: none;
+  }
+}
+
+@media (nim-width: 920px) {
+  .stickToRight {
+    width: 220px;
   }
 }
