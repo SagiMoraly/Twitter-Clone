@@ -52,6 +52,7 @@ const useHandleUsers = () => {
   const handleLogout = useCallback(() => {
     removeToken();
     setUser(null);
+    navigate("/login");
   }, [setUser]);
 
   const handleSignup = useCallback(

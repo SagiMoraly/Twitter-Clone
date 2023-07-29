@@ -9,6 +9,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import { useUserLoged } from "../../../collections/users/providers/UserProvider";
 import useHandleUsers from "../../../collections/users/hooks/useHandleUsers";
 import CardActionArea from "@mui/material/CardActionArea";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -77,6 +78,7 @@ export const LeftNavbar = () => {
             tweet
           </Typography>
         </Button>
+
         <div style={{ position: "absolute", bottom: 45 }}>
           <Box display="flex" alignItems="center">
             <Avatar alt={user?.alt} src={user?.url} />

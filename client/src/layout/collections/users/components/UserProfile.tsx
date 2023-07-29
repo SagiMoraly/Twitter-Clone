@@ -30,7 +30,7 @@ const UserProfile: React.FC<PostProps> = ({ onDelete, onLike, user }) => {
   if (user)
     return (
       <>
-        <MuiCard sx={{ minWidth: 700 }} elevation={0}>
+        <MuiCard sx={{}} elevation={0}>
           {/* User Avatar and Name */}
           <CardActionArea
             onMouseEnter={handleMouseEnter}

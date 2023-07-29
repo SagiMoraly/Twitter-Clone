@@ -25,7 +25,7 @@ const Comment: React.FC<CommentProps> = ({
   const navigate = useNavigate();
 
   return (
-    <MuiCard sx={{ minWidth: 700, borderRadius: 0 }}>
+    <MuiCard sx={{ borderRadius: 0 }}>
       <CardActionArea onClick={() => navigate(`${"/user"}/${user._id}`)}>
         <PostAvatar user={user} time={comment.timestamp} />
       </CardActionArea>

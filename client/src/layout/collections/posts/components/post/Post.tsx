@@ -23,7 +23,7 @@ const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
   return (
     <MuiCard
       sx={{
-        minWidth: 700,
+        // minWidth: 700,
         borderRadius: 0,
         paddingTop: 2,
         paddingLeft: 0.5,

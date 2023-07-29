@@ -5,6 +5,7 @@ import Post from "./post/Post";
 import PostInterface from "../models/interfaces/PostInterface";
 import CommentInterface from "../models/interfaces/Comment";
 import UserInterface from "../../users/models/interfaces/UserInterface";
+import MenuItem from "@mui/material/MenuItem";
 
 type PostsProps = {
   posts: PostInterface[] | CommentInterface[];
@@ -19,7 +20,14 @@ const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike, users }) => {
   };
 
   return (
-    <Grid container spacing={0} pb={0}>
+    <Grid
+      container
+      spacing={0}
+      pb={0}
+      direction="column"
+      justifyContent="flex-start"
+      alignItems="stretch"
+    >
       {posts.map((item) => {
         const authorId = item.author;
         const user = findUserById(authorId);
@@ -30,29 +38,41 @@ const Posts: React.FC<PostsProps> = ({ posts, onDelete, onLike, users }) => {
 
         if ("comments" in item) {
           return (
-            <div className="post">
-              <Grid item key={item._id}>
-                <Post
-                  post={item}
-                  onDelete={onDelete}
-                  onLike={onLike}
-                  user={user}
-                />
-              </Grid>
-            </div>
-          );
-        }
-        return (
-          <div className="post">
-            <Grid item key={item._id}>
-              <Comment
-                comment={item}
+            <Grid
+              className="post"
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              key={item._id}
+            >
+              <Post
+                post={item}
                 onDelete={onDelete}
                 onLike={onLike}
                 user={user}
               />
             </Grid>
-          </div>
+          );
+        }
+        return (
+          <Grid
+            className="post"
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            key={item._id}
+          >
+            <Comment
+              comment={item}
+              onDelete={onDelete}
+              onLike={onLike}
+              user={user}
+            />
+          </Grid>
         );
       })}
     </Grid>
