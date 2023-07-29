@@ -46,7 +46,8 @@ const Form: FC<Props> = ({
       sx={{ mt: 2, p: { xs: 1, sm: 2 }, ...styles }}
       onSubmit={onSubmit}
       autoComplete="off"
-      noValidate>
+      noValidate
+    >
       <Typography align="center" variant="h5" component="h1" mb={2}>
         {title.toUpperCase()}
       </Typography>
@@ -76,7 +77,10 @@ const Form: FC<Props> = ({
         <Grid item xs={12}>
           <FormButton
             node="Submit"
-            onClick={onSubmit}
+            onClick={() => {
+              onSubmit();
+              onReset();
+            }}
             disabled={!!onFormChange()}
             size="large"
           />

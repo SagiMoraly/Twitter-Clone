@@ -29,6 +29,7 @@ type Props = {
 const FormTweet: FC<Props> = ({
   title = "",
   onSubmit,
+  onReset,
   onFormChange,
   to = "/",
   color = "inherit",
@@ -59,7 +60,10 @@ const FormTweet: FC<Props> = ({
         <Grid item xs={2}>
           <FormButton
             node="Tweet"
-            onClick={onSubmit}
+            onClick={() => {
+              onSubmit();
+              onReset();
+            }}
             disabled={!!onFormChange()}
             size="small"
             borderRadius="9999px"

@@ -59,12 +59,12 @@ export const LeftNavbar = () => {
         <Button
           variant="text"
           component={Link}
-          to="/connect"
+          to="/liked"
           style={{ color: isActivePage("/connect") ? "" : "black" }}
         >
-          <AlternateEmailIcon sx={{ fontSize: 30 }} />
+          <FavoriteIcon sx={{ fontSize: 30 }} />
           <Typography className="nav-link-text" variant="h6">
-            connect
+            liked
           </Typography>
         </Button>
         <Button
