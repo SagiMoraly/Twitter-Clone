@@ -10,6 +10,7 @@ import { useUserLoged } from "../../../collections/users/providers/UserProvider"
 import useHandleUsers from "../../../collections/users/hooks/useHandleUsers";
 import CardActionArea from "@mui/material/CardActionArea";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
@@ -79,7 +80,7 @@ export const LeftNavbar = () => {
           </Typography>
         </Button>
 
-        <div style={{ position: "absolute", bottom: 45 }}>
+        <div className="logoutBig" style={{ position: "absolute", bottom: 45 }}>
           <Box display="flex" alignItems="center">
             <Avatar alt={user?.alt} src={user?.url} />
             <Typography>{`@${user?.userName}`}</Typography>
@@ -94,6 +95,22 @@ export const LeftNavbar = () => {
                 >
                   logout
                 </Typography>
+              </CardActionArea>
+            </div>
+          </Box>
+        </div>
+        <div
+          className="logoutSmall"
+          style={{ position: "absolute", marginLeft: 15, bottom: 45 }}
+        >
+          <Box display="flex" alignItems="center">
+            <div>
+              <CardActionArea
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                <LogoutIcon />
               </CardActionArea>
             </div>
           </Box>
