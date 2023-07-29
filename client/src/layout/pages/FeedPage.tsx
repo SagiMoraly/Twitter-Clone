@@ -8,20 +8,20 @@ import useUser from "../collections/users/hooks/useUser";
 import { Twitting } from "../../extras/components/Twitting";
 
 export const FeedPage = () => {
-  const { value, handleGetPosts, handleDeletePost } = usePosts();
+  const { value, handleGetFeedUserPosts, handleDeletePost } = usePosts();
   const { posts, error, isLoading } = value;
   const { user } = useUserLoged();
   const { handleGetUsers, userValue } = useUser();
   const { users } = userValue;
 
   useEffect(() => {
-    handleGetPosts();
+    handleGetFeedUserPosts();
     handleGetUsers();
   }, []);
 
   const onDeletePost = async (author: string) => {
     await handleDeletePost(author);
-    await handleGetPosts();
+    await handleGetFeedUserPosts();
   };
 
   if (!user) return <Navigate replace to={"/"} />;

@@ -25,7 +25,7 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find().sort({ createdAt: "descending" });
+    const posts = await Post.find().sort({ createdAt: "-1" });
     return res.send(posts);
   } catch (error) {
     return handleError(res, 500, `Mongoose Error: ${error.message}`);
@@ -125,7 +125,8 @@ const getFeed = async (req, res) => {
   try {
     const user = req.user;
     const myUser = await User.findById(user._id);
-    const following = myUser.following;
+    let following = myUser.following;
+    following.push(user._id);
 
     const posts = await Post.find().sort({ timestamp: "-1" });
     let feed = posts.filter((post) =>
