@@ -57,7 +57,7 @@ const login = async (req, res) => {
       error.message === "Authentication Error: Invalid email or password";
 
     return handleError(
-      +res,
+      res,
       isAuthError ? 403 : 500,
       `Mongoose Error: ${error.message}`
     );
