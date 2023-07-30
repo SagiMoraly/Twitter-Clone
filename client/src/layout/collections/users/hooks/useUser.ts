@@ -4,7 +4,7 @@ import RegistrationForm, {
   UserMapToModelEditType,
 } from "../models/types/userType";
 import { editUser } from "../service/userApi";
-import { getUser, getUsers, followUser } from "../service/userApi";
+import { getUser, getUsers, followUser, DeleteUser } from "../service/userApi";
 import {
   UserMapToModelType,
   NormalizedEditUser,
@@ -78,6 +78,17 @@ const useUser = () => {
     []
   );
 
+  const handleDeleteUser = async (userId: string) => {
+    try {
+      setLoadingUser(true);
+      const user = await DeleteUser(userId);
+      requestStatus(false, null, null, null);
+      return user;
+    } catch (error) {
+      if (typeof error === "string") requestStatus(false, error, null, null);
+    }
+  };
+
   const handleFollowUser = async (userId: string) => {
     try {
       setLoadingUser(true);
@@ -99,6 +110,7 @@ const useUser = () => {
     handleGetUsers,
     handleFollowUser,
     userValue,
+    handleDeleteUser,
   };
 };
 

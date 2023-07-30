@@ -47,7 +47,7 @@ const useComments = () => {
         const normalizedPost = normalizeComment(commentFromClient);
         const post = await createComment(normalizedPost, postId);
         requestStatus(false, null, null, post);
-        snack("success", "A new business post has been created");
+        snack("success", "A new post has been created");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);
       }
@@ -60,7 +60,7 @@ const useComments = () => {
       try {
         setLoading(true);
         await deleteComment(postId, commentId);
-        snack("success", "The business post has been successfully deleted");
+        snack("success", "The post has been successfully deleted");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);
       }

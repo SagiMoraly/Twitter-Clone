@@ -61,10 +61,10 @@ const useHandleUsers = () => {
         setLoading(true);
         const normalizedUser = normalizeUser(user);
         await signup(normalizedUser);
-        await handleLogin({
-          email: user.email,
-          password: user.password,
-        });
+        // await handleLogin({
+        //   email: user.email,
+        //   password: user.password,
+        // });
       } catch (error) {
         if (typeof error === "string") requestStatus(false, error, null);
       }

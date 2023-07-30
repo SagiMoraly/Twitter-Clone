@@ -112,7 +112,7 @@ const deletePost = async (req, res) => {
     if (!user.isAdmin)
       if (user._id != post.author)
         throw new Error(
-          "You must be a business or admin type user in order to delete a business post"
+          "You must be a or admin type user in order to delete a post"
         );
 
     return res.send(post);

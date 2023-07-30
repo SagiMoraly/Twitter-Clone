@@ -136,7 +136,7 @@ const UserForm: FC<Props> = ({
         breakPoints={{ sm: 6 }}
         required={false}
       />
-      <FormLink text="Already registered?" to={"login"} />
+      <FormLink text="Already registered?" to={"/login"} />
     </Form>
   );
 };

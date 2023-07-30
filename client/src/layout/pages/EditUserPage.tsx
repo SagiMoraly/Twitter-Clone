@@ -10,9 +10,10 @@ import userEditSchema from "../collections/users/models/Joi/userEditSchema";
 import mapUserEditToModel from "../collections/users/helpers/normalization/mapUserEditToModel";
 import UserFormEdit from "../collections/users/components/UserFormEdit";
 import useUser, { userType } from "../collections/users/hooks/useUser";
+import UserActionBar from "../collections/users/components/UserActionBar";
 
 const EditUserPage = () => {
-  const { handleGetUser, handleUpdateUser } = useUser();
+  const { handleGetUser, handleUpdateUser, handleDeleteUser } = useUser();
   const { user } = useUserLoged();
   const { userId } = useParams();
   const { handleSignup } = useHandleUsers();
@@ -41,25 +42,28 @@ const EditUserPage = () => {
   // if (userId) return <Navigate replace to={ROUTES.LOGIN} />;
 
   return (
-    <Container
-      sx={{
-        paddingTop: 8,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <UserFormEdit
-        title="edit user"
-        onSubmit={onSubmit}
-        onReset={handleReset}
-        errors={errors}
-        onFormChange={validateForm}
-        onInputChange={handleInputChange}
-        data={data}
-        setData={rest.setData}
-      />
-    </Container>
+    <>
+      <Container
+        sx={{
+          paddingTop: 8,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <UserFormEdit
+          title="edit user"
+          onSubmit={onSubmit}
+          onReset={handleReset}
+          errors={errors}
+          onFormChange={validateForm}
+          onInputChange={handleInputChange}
+          data={data}
+          setData={rest.setData}
+        />
+      </Container>
+      {userId && <UserActionBar onDelete={handleDeleteUser} userId={userId} />}
+    </>
   );
 };
 

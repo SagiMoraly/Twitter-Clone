@@ -5,6 +5,8 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useNavigate } from "react-router-dom";
+import useHandleUsers from "../hooks/useHandleUsers";
 
 type Props = {
   isDialogOpen: boolean;
@@ -12,11 +14,13 @@ type Props = {
   onChangeDialog: (term?: string) => void;
 };
 
-const PostDeleteDialog: FC<Props> = ({
+const UserDeleteDialog: FC<Props> = ({
   isDialogOpen,
   onDelete,
   onChangeDialog,
 }) => {
+  const { handleLogout } = useHandleUsers();
+  const navigate = useNavigate();
   return (
     <Dialog
       open={isDialogOpen}
@@ -30,8 +34,8 @@ const PostDeleteDialog: FC<Props> = ({
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          This operation will completely delete the post and all its data from
-          the database and it will not be possible to retrieve the post
+          This operation will completely delete the user and all its data from
+          the database and it will not be possible to retrieve the user
           afterwards
         </DialogContentText>
       </DialogContent>
@@ -39,12 +43,19 @@ const PostDeleteDialog: FC<Props> = ({
         <Button onClick={() => onChangeDialog()} color="error">
           cancel
         </Button>
-        <Button onClick={onDelete} autoFocus color="info">
-          Delete post
+        <Button
+          onClick={() => {
+            onDelete();
+            handleLogout();
+          }}
+          autoFocus
+          color="info"
+        >
+          Delete user
         </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default PostDeleteDialog;
+export default UserDeleteDialog;

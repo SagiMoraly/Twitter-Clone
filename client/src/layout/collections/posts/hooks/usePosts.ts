@@ -118,7 +118,7 @@ const usePosts = () => {
         const normalizedPost = normalizePost(postFromClient);
         const post = await createPost(normalizedPost);
         requestStatus(false, null, null, post);
-        snack("success", "A new business post has been created");
+        snack("success", "A new post has been created");
         navigate("/home");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);
@@ -131,7 +131,7 @@ const usePosts = () => {
     try {
       setLoading(true);
       await deletePost(postId);
-      snack("success", "The business post has been successfully deleted");
+      snack("success", "The post has been successfully deleted");
     } catch (error) {
       if (typeof error === "string") return requestStatus(false, error, null);
     }
@@ -144,7 +144,7 @@ const usePosts = () => {
         const normalizedPost = normalizeEditPost(postFromClient);
         const postFomServer = await editPost(normalizedPost);
         requestStatus(false, null, null, postFomServer);
-        snack("success", "The business post has been successfully updated");
+        snack("success", "The post has been successfully updated");
         navigate("/home");
       } catch (error) {
         if (typeof error === "string") return requestStatus(false, error, null);

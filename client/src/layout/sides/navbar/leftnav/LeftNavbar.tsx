@@ -61,14 +61,14 @@ export const LeftNavbar = () => {
           variant="text"
           component={Link}
           to="/liked"
-          style={{ color: isActivePage("/connect") ? "" : "black" }}
+          style={{ color: isActivePage("/liked") ? "" : "black" }}
         >
           <FavoriteIcon sx={{ fontSize: 30 }} />
           <Typography className="nav-link-text" variant="h6">
             liked
           </Typography>
         </Button>
-        <Button
+        {/* <Button
           variant="text"
           component={Link}
           to="/tweet"
@@ -78,7 +78,7 @@ export const LeftNavbar = () => {
           <Typography className="nav-link-text" variant="h6">
             tweet
           </Typography>
-        </Button>
+        </Button> */}
 
         <div className="logoutBig" style={{ position: "absolute", bottom: 45 }}>
           <Box display="flex" alignItems="center">

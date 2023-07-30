@@ -11,6 +11,7 @@ const register = async (req, res) => {
     const user = req.body;
     const { email } = user;
     const { error } = registerValidation(user);
+    console.log("im here");
     if (error)
       return handleError(
         res,
@@ -34,6 +35,7 @@ const login = async (req, res) => {
     const user = req.body;
     const { email } = user;
     const { error } = loginValidation(user);
+    console.log("why im here");
     if (error)
       return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
@@ -69,7 +71,7 @@ const getUsers = async (req, res) => {
     const user = req.user;
     // if (!user.isAdmin)
     //   throw new Error(
-    //     "You must be a admin type user in order to get all business users"
+    //     "You must be a admin type user in order to get all users"
     //   );
 
     const users = await User.find().sort({ createdAt: "descending" });
