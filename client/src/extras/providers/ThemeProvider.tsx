@@ -24,7 +24,7 @@ type Props = {
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [isDark, setDark] = useState(false);
 
-  const toggleDarkMode = useCallback(() => setDark(prev => !prev), [setDark]);
+  const toggleDarkMode = useCallback(() => setDark((prev) => !prev), [setDark]);
 
   const theme = createTheme({
     palette: {

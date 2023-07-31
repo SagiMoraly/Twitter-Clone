@@ -1,5 +1,5 @@
 import usePosts from "../collections/posts/hooks/usePosts";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useUserLoged } from "../collections/users/providers/UserProvider";
 import { Navigate } from "react-router-dom";
 import PostFeedback from "../collections/posts/components/PostsFeedback";
@@ -17,6 +17,7 @@ export const FeedPage = () => {
   useEffect(() => {
     handleGetFeedUserPosts();
     handleGetUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onDeletePost = async (author: string) => {

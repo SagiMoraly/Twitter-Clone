@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -10,12 +10,18 @@ import { useUserLoged } from "../../collections/users/providers/UserProvider";
 import FollowButton from "../../../extras/components/FollowButton";
 import MuiCard from "@mui/material/Card";
 import { Avatar, CardActionArea, Box } from "@mui/material";
+// import { useTheme } from "../../../extras/providers/ThemeProvider";
+// import IconButton from "@mui/material/IconButton";
+// import DarkModeIcon from "@mui/icons-material/DarkMode";
+// import LightModeIcon from "@mui/icons-material/LightMode";
 
 export const SearchBar = () => {
   const { handleSearch, searchQuery, filteredUsers } = useSearch();
   const { handleFollowUser } = useUser();
   const { user } = useUserLoged();
   const navigate = useNavigate();
+
+  // const { isDark, toggleDarkMode } = useTheme();
 
   return (
     <div className="search">
@@ -36,7 +42,7 @@ export const SearchBar = () => {
       {/* List of filtered users */}
       <List>
         {filteredUsers &&
-          filteredUsers.map((curUser) => {
+          filteredUsers.map((curUser, indexForWorning) => {
             if (curUser._id !== user?._id) {
               return (
                 <MuiCard
@@ -47,6 +53,7 @@ export const SearchBar = () => {
                     paddingLeft: 0.5,
                     paddingRight: 0.5,
                   }}
+                  key={indexForWorning}
                 >
                   <ListItem key={curUser._id}>
                     <CardActionArea
@@ -77,6 +84,10 @@ export const SearchBar = () => {
             return null;
           })}
       </List>
+      {/* 
+      <IconButton onClick={toggleDarkMode} sx={{ marginLeft: 1 }}>
+        {isDark ? <LightModeIcon /> : <DarkModeIcon />}
+      </IconButton> */}
     </div>
   );
 };
