@@ -1,7 +1,10 @@
 const { generateAuthToken } = require("../../../middleware/auth/Providers/jwt");
 const { handleError } = require("../../../utils/handleErrors");
 const { comparePassword } = require("../helpers/bcrypt");
-const normalizeUser = require("../helpers/normalizeUser");
+const {
+  normalizeUser,
+  normalizeEditUser,
+} = require("../helpers/normalizeUser");
 const loginValidation = require("../models/joi/loginValidation");
 const registerValidation = require("../models/joi/registerValidation");
 const User = require("../models/mongoose/User");
@@ -109,7 +112,7 @@ const updateUser = async (req, res) => {
     const { userId } = req.params;
     if (!(user._id === userId))
       throw new Error("A user dose not have the ability to use this function");
-    user = await normalizeUser(user);
+    user = await normalizeEditUser(user);
     user = await User.findByIdAndUpdate(userId, user, {
       new: true,
     });

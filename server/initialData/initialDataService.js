@@ -1,7 +1,7 @@
 const normalizePost = require("../collections/posts/helpers/normalizePost");
 const validatePost = require("../collections/posts/models/joi/validatePost");
 const Post = require("../collections/posts/models/mongoose/Post");
-const normalizeUser = require("../collections/users/helpers/normalizeUser");
+const { normalizeUser } = require("../collections/users/helpers/normalizeUser");
 const registerValidation = require("../collections/users/models/joi/registerValidation");
 const User = require("../collections/users/models/mongoose/User");
 const data = require("./initialData.json");
