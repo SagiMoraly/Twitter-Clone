@@ -2,20 +2,21 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import ChatIcon from "@mui/icons-material/Chat";
+// import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+// import ChatIcon from "@mui/icons-material/Chat";
 import { useUserLoged } from "../../../collections/users/providers/UserProvider";
 import useHandleUsers from "../../../collections/users/hooks/useHandleUsers";
 import CardActionArea from "@mui/material/CardActionArea";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LogoutIcon from "@mui/icons-material/Logout";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-import NavItem from "../../../../extras/components/NavItem";
+// import NavItem from "../../../../extras/components/NavItem";
 import { Typography, Avatar, Box } from "@mui/material";
 
 export const LeftNavbar = () => {
@@ -66,6 +67,17 @@ export const LeftNavbar = () => {
           <FavoriteIcon sx={{ fontSize: 30 }} />
           <Typography className="nav-link-text" variant="h6">
             liked
+          </Typography>
+        </Button>
+        <Button
+          variant="text"
+          component={Link}
+          to="/about"
+          style={{ color: isActivePage("/about") ? "" : "black" }}
+        >
+          <InfoOutlinedIcon sx={{ fontSize: 30 }} />
+          <Typography className="nav-link-text" variant="h6">
+            about
           </Typography>
         </Button>
         {/* <Button
