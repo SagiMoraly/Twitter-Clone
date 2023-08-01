@@ -4,6 +4,7 @@ import { NotLogedInPage } from "../layout/pages/NotLogedInPage";
 import LoginPage from "../layout/pages/LoginPage";
 import SignupPage from "../layout/pages/SignupPage";
 import { FeedPage } from "../layout/pages/FeedPage";
+import { About } from "../layout/pages/About";
 import { LikedPage } from "../layout/pages/LikedPage";
 import PostDetailsPage from "../layout/pages/PostDetailsPage";
 import UserDetailsPage from "../layout/pages/UserDetailsPage";
@@ -22,7 +23,7 @@ const Router = () => {
       <Route path={"/user/:userId"} element={<UserDetailsPage />} />
       <Route path={"/edit/post/:postId"} element={<EditPostPage />} />
       <Route path={"/edit/user/:userId"} element={<EditUserPage />} />
-      <Route path="/about" />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 };

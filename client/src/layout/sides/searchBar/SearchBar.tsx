@@ -84,6 +84,19 @@ export const SearchBar = () => {
             return null;
           })}
       </List>
+      <div
+        style={{
+          cursor: "pointer",
+          textDecoration: "underline",
+          bottom: 30,
+          position: "absolute",
+        }}
+        onClick={() => {
+          navigate("/about");
+        }}
+      >
+        about
+      </div>
       {/* 
       <IconButton onClick={toggleDarkMode} sx={{ marginLeft: 1 }}>
         {isDark ? <LightModeIcon /> : <DarkModeIcon />}
