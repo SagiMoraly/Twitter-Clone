@@ -32,7 +32,7 @@ const PostDetailsPage = () => {
       });
   }, []);
 
-  if (!user) return <Navigate replace to={"/"} />;
+  if (!postId) return <Navigate replace to={"/"} />;
 
   const onDeleteComment = async (commentId: string) => {
     if (postId) {
