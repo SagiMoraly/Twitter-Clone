@@ -20,6 +20,11 @@ cd twitter-clone
 `cd client`
 `npm install`
 
+4. Install client dependencies:
+
+`cd server`
+`npm install`
+
 ## Running the Application
 
 To start the server:
