@@ -28,7 +28,7 @@ const UserDetailsPage = () => {
       });
   }, [handleDeletePost]);
 
-  if (!user) return <Navigate replace to={"/"} />;
+  if (!userId) return <Navigate replace to={"/"} />;
 
   const onDeletePost = async (author: string) => {
     await handleDeletePost(author);
