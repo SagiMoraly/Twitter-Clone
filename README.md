@@ -9,9 +9,8 @@ This is a Twitter clone web application built using React, Node.js, MongoDB, and
 1. Clone the repository from GitHub:
 
 git clone <[repository-url](https://github.com/colaking69/twitter-clone)>
-cd twitter-clone
 
-2. Install server dependencies:
+1. Install server dependencies:
 
 `npm install`
 
