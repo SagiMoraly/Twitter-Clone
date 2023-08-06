@@ -39,7 +39,7 @@ const EditUserPage = () => {
       });
   }, []);
 
-  // if (userId) return <Navigate replace to={ROUTES.LOGIN} />;
+  if (!user) return <Navigate replace to={"/"} />;
 
   return (
     <>

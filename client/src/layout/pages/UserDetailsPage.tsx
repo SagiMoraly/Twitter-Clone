@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Container from "@mui/material/Container";
-// import PageHeader from "./../../components/PageHeader";
 import { useParams } from "react-router-dom";
-import Post from "../collections/posts/components/post/Post";
 import UserProfile from "../collections/users/components/UserProfile";
 import usePosts from "../collections/posts/hooks/usePosts";
 import Spinner from "../../extras/components/Spinner";
 import Error from "../../extras/components/Error";
 import useUser from "../collections/users/hooks/useUser";
-import { CommentToPost } from "../../extras/components/CommentToPost";
 import PostFeedback from "../collections/posts/components/PostsFeedback";
 import UserInterface from "../collections/users/models/interfaces/UserInterface";
-import Posts from "../collections/posts/components/Posts";
+import { Navigate } from "react-router-dom";
 
 const UserDetailsPage = () => {
   const { userId } = useParams();
@@ -32,7 +28,7 @@ const UserDetailsPage = () => {
       });
   }, [handleDeletePost]);
 
-  // need to test delete
+  if (!user) return <Navigate replace to={"/"} />;
 
   const onDeletePost = async (author: string) => {
     await handleDeletePost(author);
@@ -41,18 +37,6 @@ const UserDetailsPage = () => {
   if (isLoading) return <Spinner />;
   if (error) return <Error errorMessage={error} />;
   if (!isLoading && !posts && !users) return <p>No post to display...</p>;
-
-  // console.log(
-  //   <PostFeedback
-  //     posts={posts}
-  //     users={users}
-  //     error={error}
-  //     isLoading={isLoading}
-  //     onDelete={onDeletePost}
-  //   />
-  // );
-  // console.log(user);
-  // console.log(isLoading);
 
   if (!isLoading && posts && user)
     return (

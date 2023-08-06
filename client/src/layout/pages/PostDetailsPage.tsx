@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "@mui/material/Container";
-// import PageHeader from "./../../components/PageHeader";
+import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Post from "../collections/posts/components/post/Post";
 import usePosts from "../collections/posts/hooks/usePosts";
@@ -33,7 +32,7 @@ const PostDetailsPage = () => {
       });
   }, []);
 
-  // need to test delete
+  if (!user) return <Navigate replace to={"/"} />;
 
   const onDeleteComment = async (commentId: string) => {
     if (postId) {

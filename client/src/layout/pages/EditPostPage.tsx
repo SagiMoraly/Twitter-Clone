@@ -18,11 +18,14 @@ const EditPostPage = () => {
 
   const navigate = useNavigate();
 
+  
+
   const { value, ...rest } = useForm(
     initialPostForm,
     PostEditSchema,
     handleUpdatePost
   );
+  
 
   const { data, errors } = value;
   const { handleInputChange, handleReset, onSubmit, setData, validateForm } =
