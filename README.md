@@ -1,7 +1,3 @@
-# twitter clone
-
-project to show skills as fullstack web developer
-
 # Twitter Clone - README
 
 ## Introduction
@@ -12,28 +8,29 @@ This is a Twitter clone web application built using React, Node.js, MongoDB, and
 
 1. Clone the repository from GitHub:
 
-git clone <repository-url>
+git clone <[repository-url](https://github.com/colaking69/twitter-clone)>
 cd twitter-clone
 
 2. Install server dependencies:
 
-npm install
+`npm install`
 
 3. Install client dependencies:
 
-cd client
-npm install
+`cd client`
+`npm install`
 
 ## Running the Application
 
 To start the server:
 
-npm run dev
+`cd server`
+`npm run dev`
 
 To start the client:
 
-cd client
-npm start
+`cd client`
+`npm start`
 
 ## Server Dependencies
 
