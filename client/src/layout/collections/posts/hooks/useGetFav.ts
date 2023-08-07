@@ -5,8 +5,8 @@ const useGetFav = () => {
   const { value, handleGetPosts } = usePosts();
   const { posts } = value;
 
-  const [searchUser, setSearchUser] = useState(""); // State variable for search query
-  const [filteredFavPosts, setFilteredFavPosts] = useState(posts); // State variable for filtered Posts
+  const [searchUser, setSearchUser] = useState("");
+  const [filteredFavPosts, setFilteredFavPosts] = useState(posts);
 
   useEffect(() => {
     handleGetPosts();

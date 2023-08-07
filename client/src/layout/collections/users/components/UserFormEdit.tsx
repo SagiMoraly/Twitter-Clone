@@ -1,7 +1,4 @@
 import React, { FC, ChangeEvent } from "react";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Grid from "@mui/material/Grid";
 import Form from "../../../../extras/forms/components/Form";
 import Input from "../../../../extras/forms/components/Input";
 import Joi from "joi";
@@ -9,7 +6,6 @@ import {
   RegistrationForm,
   RegistrationFormErrors,
 } from "../models/types/userType";
-// import FormLink from "../../../../extras/forms/components/FormLink";
 
 type Props = {
   title?: string;

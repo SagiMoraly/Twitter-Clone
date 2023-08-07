@@ -72,10 +72,6 @@ const login = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const user = req.user;
-    // if (!user.isAdmin)
-    //   throw new Error(
-    //     "You must be a admin type user in order to get all users"
-    //   );
 
     const users = await User.find().sort({ createdAt: "descending" });
     return res.send(users);
@@ -88,12 +84,6 @@ const getUser = async (req, res) => {
   try {
     const { userId } = req.params;
     let user = req.user;
-
-    // if (!user.isAdmin)
-    //   if (!(user._id === userId))
-    //     throw new Error(
-    //       "A user dose not have the ability to use this function"
-    //     );
 
     user = await User.findById(userId);
 

@@ -7,7 +7,6 @@ import PostAvatar from "./PostAvatar";
 import CardActionBar from "./PostActionBar";
 import { useNavigate } from "react-router-dom";
 import PostInterface from "../../models/interfaces/PostInterface";
-// import CommentInterface from "../../models/interfaces/Comment";
 import UserInterface from "../../../users/models/interfaces/UserInterface";
 
 type PostProps = {
@@ -19,11 +18,9 @@ type PostProps = {
 
 const Post: React.FC<PostProps> = ({ post, onDelete, onLike, user }) => {
   const navigate = useNavigate();
-  // elevation={4}
   return (
     <MuiCard
       sx={{
-        // minWidth: 700,
         borderRadius: 0,
         paddingTop: 2,
         paddingLeft: 0.5,

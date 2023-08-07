@@ -16,9 +16,9 @@ type Props = {
   onClick: () => void;
   disabled?: boolean;
   node: ReactNode;
-  borderRadius?: string; // Optional prop for controlling the borderRadius
-  padding?: string; // Optional prop for controlling the borderRadius
-  fontWeight?: string; // Optional prop for controlling the borderRadius
+  borderRadius?: string;
+  padding?: string;
+  fontWeight?: string;
 };
 
 const FormButton: FC<Props> = ({
@@ -29,7 +29,7 @@ const FormButton: FC<Props> = ({
   onClick,
   disabled = false,
   node,
-  borderRadius, // No default value specified
+  borderRadius,
   padding,
   fontWeight,
 }) => {

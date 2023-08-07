@@ -26,7 +26,6 @@ export const LikedPage = () => {
 
   if (!user) return <Navigate replace to={"/"} />;
 
-  //   console.log(user);
   return (
     <div>
       <div style={{ borderBottom: "2px solid #e7ecf0" }}>

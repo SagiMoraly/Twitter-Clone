@@ -1,7 +1,6 @@
 const { handleError } = require("../../../utils/handleErrors");
 const User = require("../models/mongoose/User");
 
-//if a user is deleted
 const followUser = async (req, res) => {
   try {
     const followingUserId = req.user._id;

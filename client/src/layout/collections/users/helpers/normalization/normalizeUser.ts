@@ -5,7 +5,6 @@ import {
 
 export const normalizeUser = (user: UserMapToModelType) => {
   return {
-    // _id: user._id,
     userName: user.userName,
     email: user.email,
     password: user.password,

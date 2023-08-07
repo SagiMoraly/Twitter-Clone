@@ -1,14 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Box, IconButton } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
+import React, { useState } from "react";
+import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useUserLoged } from "../providers/UserProvider";
 import UserDeleteDialog from "./UserDeleteDialog";
 import { useNavigate } from "react-router-dom";
-// import { likePost } from "../../services/postApiService";
 
 type UserActionBarProps = {
   userId: string;

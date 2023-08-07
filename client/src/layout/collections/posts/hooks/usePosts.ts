@@ -11,7 +11,6 @@ import {
   getFeed,
 } from "../services/postApiService";
 import useAxios from "../../../../extras/hooks/useAxios";
-// import normalizePost from "./../helpers/normalization/normalizePost";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 import PostInterface from "../models/interfaces/PostInterface";

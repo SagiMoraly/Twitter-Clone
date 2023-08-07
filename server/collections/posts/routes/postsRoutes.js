@@ -28,17 +28,3 @@ router.post("/:postId", auth, createComment);
 router.delete("/:postId/:commentId", auth, deleteComment);
 
 module.exports = router;
-//not working
-
-///////////////done//////////////
-// GET /api/users/:userId/posts: Get posts created by a specific user.
-// GET /api/posts/feed: Get a feed of posts from followed users.
-// DELETE /api/posts/:postId/comment/:commentId: Delete a comment from a post.
-// POST /api/posts/:postId/comment: Add a comment to a post.
-// GET /api/posts/feed: Get my posts.
-// DELETE /api/posts/:postId: Delete a post by post ID.
-// POST /api/posts/:postId/like: Like a post/Unlike.
-// PUT /api/posts/:postId: Update a post by post ID.
-// POST /api/posts: Create a new post.
-// GET /api/posts/:postId: Retrieve a post by post ID.
-// GET /api/posts/: Get all the posts.

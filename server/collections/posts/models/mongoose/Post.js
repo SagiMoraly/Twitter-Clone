@@ -42,18 +42,6 @@ const imageSchema = new mongoose.Schema({
   },
 });
 
-// const commentSchema = new mongoose.Schema({
-//   content: DEFAULT_VALIDATION,
-//   timestamp: {
-//     type: Date,
-//     default: Date.now,
-//   },
-//   author: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     required: true,
-//   },
-// });
-
 const schema = new mongoose.Schema({
   content: DEFAULT_VALIDATION,
   author: {

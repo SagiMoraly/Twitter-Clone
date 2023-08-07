@@ -7,12 +7,6 @@ import {
   CreatePostErrors,
 } from "../models/types/postTypes";
 import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
-import TextField from "@mui/material/TextField";
-// import AppBar from '@mui/material/AppBar'
-// import Toolbar from '@mui/material/Toolbar'
-// import IconButton from '@mui/material/IconButton'
-// import Typography from '@mui/material/Typography'
-// import Menu from '@mui/icons-material/Menu'
 
 type Props = {
   title?: string;
@@ -90,5 +84,4 @@ const PostForm: FC<Props> = ({
     </FormTweet>
   );
 };
-// marginTop: "17px", marginLeft: "17px"
 export default React.memo(PostForm);

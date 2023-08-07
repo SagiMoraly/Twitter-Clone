@@ -29,7 +29,6 @@ const normalizeEditUser = (rawUser) => {
   const user = {
     ...rawUser,
     profile,
-    // password: generateUserPassword(rawUser.password),
   };
   return user;
 };

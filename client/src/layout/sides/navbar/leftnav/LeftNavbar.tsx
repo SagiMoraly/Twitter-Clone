@@ -2,10 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import HomeIcon from "@mui/icons-material/Home";
-// import SearchIcon from "@mui/icons-material/Search";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
-// import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-// import ChatIcon from "@mui/icons-material/Chat";
 import { useUserLoged } from "../../../collections/users/providers/UserProvider";
 import useHandleUsers from "../../../collections/users/hooks/useHandleUsers";
 import CardActionArea from "@mui/material/CardActionArea";
@@ -16,7 +13,6 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-// import NavItem from "../../../../extras/components/NavItem";
 import { Typography, Avatar, Box } from "@mui/material";
 
 export const LeftNavbar = () => {

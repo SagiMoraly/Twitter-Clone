@@ -3,9 +3,7 @@ import MuiCard from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import PostBody from "../post/PostBody";
 import PostAvatar from "../post/PostAvatar";
-import CardActionBar from "../post/PostActionBar";
 import { useNavigate } from "react-router-dom";
-// import PostInterface from "../../models/interfaces/PostInterface";
 import CommentInterface from "../../models/interfaces/Comment";
 import UserInterface from "../../../users/models/interfaces/UserInterface";
 

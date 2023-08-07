@@ -17,7 +17,6 @@ type PostProps = {
 const UserProfile: React.FC<PostProps> = ({ onDelete, onLike, user }) => {
   const navigate = useNavigate();
   const { user: userLoged } = useUserLoged();
-  // console.log(user.profile.backGroundProfilePicture.BGurl);
   const [isHovered, setIsHovered] = React.useState(false);
 
   const handleMouseEnter = () => {

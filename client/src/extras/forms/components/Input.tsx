@@ -22,7 +22,6 @@ type Props = {
 };
 
 const Input: FC<Props> = ({
-  // variant = "outlined",
   type = "text",
   name,
   data,
@@ -37,7 +36,6 @@ const Input: FC<Props> = ({
   return (
     <Grid item xs={12} {...breakPoints}>
       <TextField
-        // variant={variant}
         label={makeFirstLetterCapital(label)}
         type={type}
         id={name}

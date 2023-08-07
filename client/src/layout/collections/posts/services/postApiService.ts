@@ -141,35 +141,11 @@ export const likePost = async (postId: string) => {
   try {
     const response: AxiosResponse<PostInterface> = await axios.patch(
       `${apiUrl}/posts/${postId}`
-      // , {$push: { likes: userId },}
     );
 
-    // console.log(response.data);
-    // Optional: Handle the response as needed
     return true;
   } catch (error) {
     console.error(error);
     return false;
   }
 };
-
-//note
-// check if the adress is correct
-
-// tested and exist
-
-// exist not tested
-// router.post("/", auth, createPost);
-// router.get("/", getPosts);
-// router.get("/:postId", getPost);
-// router.put("/:postId", auth, updatePost);
-// router.delete("/:postId", auth, deletePost);
-// router.get("/feed", auth, getFeed);
-// router.get("/postsUser/:userId", getUserPosts);
-// router.patch("/:postId", auth, likePost);
-
-//need fix
-
-// dont have yet
-// router.post("/:postId", auth, createComment);
-// router.delete("/:postId/:commentId", auth, deleteComment);

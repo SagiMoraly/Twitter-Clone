@@ -17,7 +17,6 @@ export const FeedPage = () => {
   useEffect(() => {
     handleGetFeedUserPosts();
     handleGetUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onDeletePost = async (author: string) => {
@@ -27,7 +26,6 @@ export const FeedPage = () => {
 
   if (!user) return <Navigate replace to={"/"} />;
 
-  //   console.log(user);
   return (
     <div>
       <div style={{ borderBottom: "2px solid #e7ecf0" }}>

@@ -9,8 +9,8 @@ const useSearch = () => {
 
   const { user } = useUserLoged();
 
-  const [searchQuery, setSearchQuery] = useState(""); // State variable for search query
-  const [filteredUsers, setFilteredUsers] = useState(users); // State variable for filtered cards
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState(users);
 
   useEffect(() => {
     handleGetUsers();
@@ -23,7 +23,6 @@ const useSearch = () => {
       }
       if (searchQuery.trim() === "") {
         return users;
-        // return null;
       }
       if (prevUsers === null) {
         return null;
@@ -35,10 +34,6 @@ const useSearch = () => {
       );
     });
   };
-  // console.log(user.userName, searchQuery);
-  // console.log(
-  //   user.userName.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
 
   useEffect(() => {
     filterUsers();

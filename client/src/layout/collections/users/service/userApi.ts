@@ -115,17 +115,3 @@ export const getFollowingUser = async (userId: string) => {
   }
 };
 
-// tested and exist
-// router.post("/", register);
-// router.post("/login", login);
-
-// exist not tested
-// router.get("/:userId", auth, getUser);
-// router.put("/:userId", auth, updateUser);
-// router.get("/", auth, getUsers);
-// router.delete("/:userId", auth, deleteUser);
-// router.patch("/follow/:userId", auth, followUser);
-// router.get("/followers/:userId", auth, followersUser);
-// router.get("/following/:userId", auth, followingUser);
-
-// dont have yet

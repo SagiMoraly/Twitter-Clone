@@ -1,22 +1,13 @@
 import { useCallback, useState, useMemo } from "react";
 import { normalizedEditUser } from "../helpers/normalization/normalizeUser";
-import RegistrationForm, {
-  UserMapToModelEditType,
-} from "../models/types/userType";
+import { UserMapToModelEditType } from "../models/types/userType";
 import { editUser } from "../service/userApi";
 import { getUser, getUsers, followUser, DeleteUser } from "../service/userApi";
-import {
-  UserMapToModelType,
-  NormalizedEditUser,
-} from "../../users/models/types/userType";
-import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 import UserInterface from "../models/interfaces/UserInterface";
 
 export type userType = null | UserInterface | undefined;
-// | NormalizedEditUser; //idk about this
 type ErrorType = null | string;
-// type usersType = userType[] | null;
 
 const useUser = () => {
   const [isLoadingUser, setLoadingUser] = useState(false);
@@ -24,7 +15,6 @@ const useUser = () => {
   const [user, setUser] = useState<userType>(null);
   const [users, setUsers] = useState<UserInterface[] | null>(null);
 
-  const navigate = useNavigate();
   const snack = useSnack();
 
   const requestStatus = (
@@ -69,7 +59,6 @@ const useUser = () => {
         const userFomServer = await editUser(normalizedUser);
         requestStatus(false, null, null, userFomServer);
         snack("success", "The user has been successfully updated");
-        // navigate(ROUTES.MY_CARDS);
       } catch (error) {
         if (typeof error === "string")
           return requestStatus(false, error, null, null);

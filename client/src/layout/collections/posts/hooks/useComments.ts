@@ -1,16 +1,11 @@
 import { useCallback, useState, useMemo } from "react";
 import { createComment, deleteComment } from "../services/postApiService";
 import useAxios from "../../../../extras/hooks/useAxios";
-// import normalizePost from "./../helpers/normalization/normalizePost";
 import { useNavigate } from "react-router-dom";
 import { useSnack } from "../../../../extras/providers/SnackbarProvider";
 import PostInterface from "../models/interfaces/PostInterface";
 import normalizeComment from "../helpers/normalizations/normalizeComment";
-import {
-  CommentFromClientType,
-  PostMapToModelType,
-} from "../models/types/postTypes";
-import normalizeEditPost from "../helpers/normalizations/normalizeEditPost";
+import { CommentFromClientType } from "../models/types/postTypes";
 
 type PostsType = null | PostInterface[];
 type PostType = null | PostInterface;
@@ -82,12 +77,11 @@ const useComments = () => {
 export default useComments;
 
 const getCurrentPostIdFromUrl = () => {
-  const currentUrl = window.location.href; // Get the current URL
-  const urlParts = currentUrl.split("/"); // Split the URL by '/'
-  const postIdIndex = urlParts.indexOf("post"); // Find the index of the 'post' segment in the URL
+  const currentUrl = window.location.href;
+  const urlParts = currentUrl.split("/");
+  const postIdIndex = urlParts.indexOf("post");
   if (postIdIndex !== -1 && postIdIndex < urlParts.length - 1) {
-    // If 'post' segment is found and it's not the last segment in the URL
-    return urlParts[postIdIndex + 1]; // Return the part of the URL after 'post'
+    return urlParts[postIdIndex + 1];
   }
-  return "11ad11111bffdaa34aef60a9"; // Return null if the post ID cannot be extracted
+  return "11ad11111bffdaa34aef60a9";
 };

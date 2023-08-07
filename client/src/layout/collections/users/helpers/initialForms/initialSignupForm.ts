@@ -10,9 +10,6 @@ const initialSignupForm = {
   alt: "",
   BGurl: "",
   BGalt: "",
-  // followers: "",
-  // following: "",
-  // isAdmin: false,
 };
 
 export default initialSignupForm;
