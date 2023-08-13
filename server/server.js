@@ -21,6 +21,6 @@ const PORT = config.get("PORT") || 9000;
 app.listen(PORT, async () => {
   console.log(chalk.blueBright(`Listening on: http://localhost:${PORT}`));
   require("./DB/mongodb/connectToMongoDB");
-  await generateInitialPosts();
+  // await generateInitialPosts();
   await generateInitialUsers();
 });

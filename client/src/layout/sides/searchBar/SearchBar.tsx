@@ -77,18 +77,19 @@ export const SearchBar = () => {
             return null;
           })}
       </List>
-      <div
-        style={{
-          cursor: "pointer",
-          textDecoration: "underline",
-          bottom: 30,
-          position: "absolute",
-        }}
-        onClick={() => {
-          navigate("/about");
-        }}
-      >
-        about
+      <div style={{ bottom: 30, position: "absolute" }}>
+        <div>© 2023 Sagi Moraly Corp.</div>
+        <div
+          style={{
+            cursor: "pointer",
+            textDecoration: "underline",
+          }}
+          onClick={() => {
+            navigate("/about");
+          }}
+        >
+          about
+        </div>
       </div>
       {/* 
       <IconButton onClick={toggleDarkMode} sx={{ marginLeft: 1 }}>
