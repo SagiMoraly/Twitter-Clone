@@ -10,16 +10,12 @@ This is a Twitter clone web application built using React, Node.js, MongoDB, and
 
 git clone <[repository-url](https://github.com/colaking69/twitter-clone)>
 
-1. Install server dependencies:
-
-`npm install`
-
-3. Install client dependencies:
+2. Install client dependencies:
 
 `cd client`
 `npm install`
 
-4. Install client dependencies:
+3. Install client dependencies:
 
 `cd server`
 `npm install`
